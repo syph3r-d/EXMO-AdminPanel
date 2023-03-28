@@ -1,0 +1,82 @@
+import React, { createContext, useState, useEffect } from "react";
+import { auth } from "../../config/db";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  // Sign up a new user
+  const signUp = async (email, password) => {
+    try {
+      setLoading(true);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setCurrentUser(userCredential.user);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const signIn = async (email, password) => {
+    try {
+      setLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setCurrentUser(userCredential.user);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //Sign out the current user
+  const signOutUser = async () => {
+    try {
+      setLoading(true);
+      await signOut(auth);
+      setCurrentUser(null);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const value = {
+    currentUser,
+    signIn,
+    signOutUser,
+    signUp,
+    loading,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;

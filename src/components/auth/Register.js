@@ -11,7 +11,7 @@ function SignUp() {
     password: "",
     password2: "",
   });
-  const [isLoading,setIsLoading]=useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const { name, email, password, password2 } = formData;
 
@@ -36,12 +36,12 @@ function SignUp() {
     }
 
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       await signUp(email, password);
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
-      notification.error("Email Already Registered")
-      setIsLoading(false)
+      notification.error("Email Already Registered");
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -52,7 +52,15 @@ function SignUp() {
 
   return (
     <Fragment>
-      {isLoading ? <Fragment><Spinner/></Fragment> : <Fragment></Fragment>}
+      {isLoading ? (
+        <Fragment>
+          <div className="alert-display">
+            <Spinner />
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment></Fragment>
+      )}
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">Create Your Account</p>
       <form action="dashboard.html" className="form">

@@ -59,7 +59,9 @@ const Dashboard = () => {
     <Fragment>
       {isLoading ? (
         <Fragment>
-          <Spinner />
+          <div className="alert-display">
+            <Spinner />
+          </div>
         </Fragment>
       ) : (
         <Fragment>

@@ -45,7 +45,7 @@ function SignIn() {
 
   return (
     <Fragment>
-      {isLoading ? <Fragment><Spinner/></Fragment> : <Fragment></Fragment>}
+      {isLoading ? <Fragment><div className="alert-display"><Spinner/></div></Fragment> : <Fragment></Fragment>}
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">Sign In to Your Account</p>
       <form className="form">

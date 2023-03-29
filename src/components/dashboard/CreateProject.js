@@ -3,6 +3,7 @@ import { projectSave, projectUpdate } from "../../models/project";
 import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import NotificationContext from "../../contexts/alertContext";
 
 const CreateProject = () => {
   const { currentUser } = useContext(AuthContext);
@@ -37,6 +38,8 @@ const CreateProject = () => {
   }, [project]);
   const navigate = useNavigate();
 
+  const notification=useContext(NotificationContext)
+
   const { name, category, department, location, description, imgs } = formData;
   const [images, setImages] = useState([]);
 
@@ -66,6 +69,7 @@ const CreateProject = () => {
     if (update) {
       try {
         await projectUpdate(formData, project.id);
+        notification.success("Project Updated Successfully")
         navigate("/dashboard");
       } catch (error) {
         console.log(error);
@@ -74,6 +78,7 @@ const CreateProject = () => {
       try {
         console.log(update);
         await projectSave(formData);
+        notification.success("Project Created Successfully")
         navigate("/dashboard");
       } catch (error) {
         console.log(error);
@@ -115,18 +120,22 @@ const CreateProject = () => {
             <option value="Compettion">Compettion</option>
             <option value="Other">Other</option>
           </select>
-          <small className="form-text">
-            Give us an idea of where you are at in your career
-          </small>
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="Department"
+          <select
             name="department"
             onChange={(e) => onChange(e)}
             value={department}
-          />
+          >
+            <option value="0">* Select Department</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="ENTC">ENTC</option>
+            <option value="CSE">CSE</option>
+            <option value="Chemical">Chemical</option>
+            <option value="Material">Material</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Civil">Civil</option>
+          </select>
         </div>
         <div className="form-group">
           <input
@@ -147,6 +156,9 @@ const CreateProject = () => {
             value={description}
           ></textarea>
         </div>
+        <small className="form-text">
+            Give people an idea of your project
+          </small>
         <div className="form-group">
           <div className="upload__box">
             <div className="upload__btn-box">

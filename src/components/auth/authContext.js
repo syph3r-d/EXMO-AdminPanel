@@ -24,43 +24,37 @@ export const AuthProvider = ({ children }) => {
   // Sign up a new user
   const signUp = async (email, password) => {
     try {
-      setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       setCurrentUser(userCredential.user);
-      setLoading(false);
     } catch (error) {
-      console.error(error);
+      throw error
     }
   };
 
   const signIn = async (email, password) => {
     try {
-      setLoading(true);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
       setCurrentUser(userCredential.user);
-      setLoading(false);
     } catch (error) {
-      console.error(error);
+      throw error
     }
   };
 
   //Sign out the current user
   const signOutUser = async () => {
     try {
-      setLoading(true);
       await signOut(auth);
       setCurrentUser(null);
-      setLoading(false);
     } catch (error) {
-      console.error(error);
+      throw error
     }
   };
 
@@ -69,7 +63,6 @@ export const AuthProvider = ({ children }) => {
     signIn,
     signOutUser,
     signUp,
-    loading,
   };
 
   return (

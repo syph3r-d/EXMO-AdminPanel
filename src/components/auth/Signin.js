@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "./authContext";
 import NotificationContext from "../../contexts/alertContext";
 import { Link,useNavigate } from "react-router-dom";
+import Spinner from "../layout/Spinner";
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -11,12 +12,14 @@ function SignIn() {
   });
   const { email, password } = formData;
 
+  const [isLoading,setIsLoading]=useState(false)
+
   const navigate = useNavigate();
 
   const {currentUser,signIn} = useContext(AuthContext);
 
   useEffect(() => {
-    if (!(currentUser == null)) {
+    if (!(currentUser == null) ) {
       navigate("/dashboard");
     }
   }, [currentUser]);
@@ -27,8 +30,10 @@ function SignIn() {
     e.preventDefault();
 
     try {
+      setIsLoading(true)
       await signIn(email, password);
     } catch (error) {
+      setIsLoading(false)
       notification.error("Invalid Credentials");
       console.log(error);
     }
@@ -40,26 +45,28 @@ function SignIn() {
 
   return (
     <Fragment>
-      <h1 class="large text-primary">Sign In</h1>
-      <p class="lead">Sign In to Your Account</p>
-      <form action="dashboard.html" class="form">
-        <div class="form-group">
+      {isLoading ? <Fragment><Spinner/></Fragment> : <Fragment></Fragment>}
+      <h1 className="large text-primary">Sign In</h1>
+      <p className="lead">Sign In to Your Account</p>
+      <form className="form">
+        <div className="form-group">
           <input type="email" placeholder="Email Address" name="email" onChange={(e)=>onChange(e)} value={email} />
-          <div class="small form-text"></div>
+          <div className="small form-text"></div>
         </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" minlength="6" name="password" onChange={(e)=>onChange(e)} value={password}/>
+        <div className="form-group">
+          <input type="password" placeholder="Password" minLength="6" name="password" onChange={(e)=>onChange(e)} value={password}/>
         </div>
         <input
           type="submit"
           value="Login"
-          class="btn btn-primary"
+          className="btn btn-primary"
           onClick={(e) => handleSubmit(e)}
         />
       </form>
-      <p class="mt-1">
+      <p className="mt-1">
         Don't have an account? <Link to="/register">Sign up</Link>
       </p>
+
     </Fragment>
   );
 }

@@ -11,6 +11,7 @@ import { NotificationProvider } from "./contexts/alertContext";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProject from "./components/dashboard/CreateProject";
+import ProtectedRoute from "./components/route/Protected";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,28 +19,65 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      console.log(user)
     });
 
     return unsubscribe;
   }, []);
 
   return (
-    <AuthProvider >
+    <AuthProvider>
       <NotificationProvider>
         <Router>
           <Fragment>
             <Navbar />
-            <section className="container">
-              <Alert/>
-              <Routes>
-                <Route exact path="/" element={<Landing />} />
-                <Route exact path="/login" element={<Signin />} />
-                <Route exact path="/register" element={<Register />} />
-                <Route exact path="/dashboard" element={<Dashboard />} />
-                <Route exact path="/create-project" element={<CreateProject />} />
-              </Routes>
-            </section>
+            <Routes>
+              <Route exact path="/" element={<Landing />} />
+
+              <Route
+                exact
+                path="/login"
+                element={
+                  <section className="container">
+                    <Alert />
+                    <Signin />
+                  </section>
+                }
+              />
+              <Route
+                exact
+                path="/register"
+                element={
+                  <section className="container">
+                    <Alert />
+                    <Register />
+                  </section>
+                }
+              />
+              <Route
+                exact
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <section className="container">
+                      <Alert />
+                      <Dashboard />
+                    </section>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/create-project"
+                element={
+                  <ProtectedRoute>
+                    <section className="container">
+                      <Alert />
+                      <CreateProject />
+                    </section>
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
           </Fragment>
         </Router>
       </NotificationProvider>

@@ -3,53 +3,61 @@ import { AuthContext } from "../auth/authContext";
 import { useNavigate, Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import { Firestore } from "../../config/db";
-import { getDocs, collection,query,where,deleteDoc,doc } from "firebase/firestore"; 
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import NotificationContext from "../../contexts/alertContext";
-
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [isLoading,setIsLoading]=useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const notification = useContext(NotificationContext);
 
-  const { currentUser, loading } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    if (currentUser == null && !loading) {
-      navigate("/login");
-    }
     const fetchData = async () => {
-      setIsLoading(true)
-      const data = await getDocs(query(collection(Firestore,'projects'),where("userid","==",currentUser.uid)));
-      setIsLoading(false)
+      setIsLoading(true);
+      const data = await getDocs(
+        query(
+          collection(Firestore, "projects"),
+          where("userid", "==", currentUser.uid)
+        )
+      );
+      setIsLoading(false);
       setProjects(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
 
     fetchData();
-  }, [currentUser, loading]);
+  }, [currentUser]);
 
-  const onDelete=async (id)=>{
+  const onDelete = async (id) => {
     try {
-      await deleteDoc(doc(Firestore,"projects",id))
+      await deleteDoc(doc(Firestore, "projects", id));
       setProjects(projects.filter((project) => project.id !== id));
-      notification.success("Project Deleted")
+      notification.success("Project Deleted");
     } catch (error) {
-      notification.error("Network Error")
-      console.log(error)
+      notification.error("Network Error");
+      console.log(error);
     }
-  }
+  };
 
-  const onEdit=(project)=>{
-    navigate('/create-project', {
+  const onEdit = (project) => {
+    navigate("/create-project", {
       state: {
-        project
-      }
+        project,
+      },
     });
-  }
+  };
   return (
     <Fragment>
-      {loading || isLoading ? (
+      {isLoading ? (
         <Fragment>
           <Spinner />
         </Fragment>
@@ -69,30 +77,43 @@ const Dashboard = () => {
             </Link>
           </div>
           <h2 className="mt-2 mb-2">Projects</h2>
-          {projects.length>0 ? <table className="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th className="hide-sm">Category</th>
-                <th className="hide-sm">Location</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map((project) => (
-                <tr key={project.id}>
-                  <td>{project.name}</td>
-                  <td className="hide-sm">{project.category}</td>
-                  <td className="hide-sm">{project.location}</td>
-                  <td>
-                    <button className="btn btn-primary" onClick={()=>onEdit(project)}>Edit</button>
-                    <button className="btn btn-danger" onClick={()=>onDelete(project.id)}>Delete</button>
-                  </td>
+          {projects.length > 0 ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th className="hide-sm">Category</th>
+                  <th className="hide-sm">Location</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table> : <h2>You have not created any projects yet</h2> }
-          
+              </thead>
+              <tbody>
+                {projects.map((project) => (
+                  <tr key={project.id}>
+                    <td>{project.name}</td>
+                    <td className="hide-sm">{project.category}</td>
+                    <td className="hide-sm">{project.location}</td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => onEdit(project)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => onDelete(project.id)}
+                      >
+                        <i className="fa fa-times" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <h2>You have not created any projects yet</h2>
+          )}
 
           <div className="mt-2">
             <button className="btn btn-primary">

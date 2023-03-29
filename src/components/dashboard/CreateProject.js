@@ -4,10 +4,9 @@ import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-
 const CreateProject = () => {
   const { currentUser } = useContext(AuthContext);
-  const [update,setUpdate]=useState(false)
+  const [update, setUpdate] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -69,11 +68,11 @@ const CreateProject = () => {
         await projectUpdate(formData, project.id);
         navigate("/dashboard");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     } else {
       try {
-        console.log(update)
+        console.log(update);
         await projectSave(formData);
         navigate("/dashboard");
       } catch (error) {

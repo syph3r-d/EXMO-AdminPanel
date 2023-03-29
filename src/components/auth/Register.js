@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NotificationContext from "../../contexts/alertContext";
 import { AuthContext } from "./authContext";
+import Spinner from "../layout/Spinner";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,13 @@ function SignUp() {
     password: "",
     password2: "",
   });
+  const [isLoading,setIsLoading]=useState(false)
+
   const { name, email, password, password2 } = formData;
 
   const navigate = useNavigate();
 
-  const {currentUser,signUp} = useContext(AuthContext);
+  const { currentUser, signUp } = useContext(AuthContext);
 
   useEffect(() => {
     if (!(currentUser == null)) {
@@ -33,8 +36,12 @@ function SignUp() {
     }
 
     try {
+      setIsLoading(true)
       await signUp(email, password);
+      setIsLoading(false)
     } catch (error) {
+      notification.error("Email Already Registered")
+      setIsLoading(false)
       console.log(error);
     }
   };
@@ -45,6 +52,7 @@ function SignUp() {
 
   return (
     <Fragment>
+      {isLoading ? <Fragment><Spinner/></Fragment> : <Fragment></Fragment>}
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">Create Your Account</p>
       <form action="dashboard.html" className="form">

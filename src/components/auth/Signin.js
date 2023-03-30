@@ -34,7 +34,7 @@ function SignIn() {
       await signIn(email, password);
     } catch (error) {
       setIsLoading(false)
-      notification.error("Invalid Credentials");
+      notification.error(error.msg);
       console.log(error);
     }
   };

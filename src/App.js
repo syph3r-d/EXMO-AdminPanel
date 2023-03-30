@@ -14,15 +14,6 @@ import CreateProject from "./components/dashboard/CreateProject";
 import ProtectedRoute from "./components/route/Protected";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    });
-
-    return unsubscribe;
-  }, []);
 
   return (
     <AuthProvider>

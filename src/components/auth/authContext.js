@@ -31,7 +31,8 @@ export const AuthProvider = ({ children }) => {
       );
       setCurrentUser(userCredential.user);
     } catch (error) {
-      throw error
+      const err={msg:error.message}
+      throw err
     }
   };
 
@@ -44,7 +45,8 @@ export const AuthProvider = ({ children }) => {
       );
       setCurrentUser(userCredential.user);
     } catch (error) {
-      throw error
+      const err={msg:error.message}
+      throw err
     }
   };
 

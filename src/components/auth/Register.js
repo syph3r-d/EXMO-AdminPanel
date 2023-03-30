@@ -38,9 +38,10 @@ function SignUp() {
     try {
       setIsLoading(true);
       await signUp(email, password);
+      notification.success("Account Created Successfully")
       setIsLoading(false);
     } catch (error) {
-      notification.error("Email Already Registered");
+      notification.error(error.msg);
       setIsLoading(false);
       console.log(error);
     }

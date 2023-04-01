@@ -38,7 +38,7 @@ function SignUp() {
     try {
       setIsLoading(true);
       await signUp(email, password);
-      notification.success("Account Created Successfully")
+      notification.success("Account Created Successfully");
       setIsLoading(false);
     } catch (error) {
       notification.error(error.msg);
@@ -62,58 +62,60 @@ function SignUp() {
       ) : (
         <Fragment></Fragment>
       )}
-      <h1 className="large text-primary">Sign Up</h1>
-      <p className="lead">Create Your Account</p>
-      <form action="dashboard.html" className="form">
-        <div className="form-group">
+      <div className="card">
+        <h1 className="large text-primary">Sign Up</h1>
+        <p className="lead">Create Your Account</p>
+        <form action="dashboard.html" className="form">
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={(e) => onChange(e)}
+              value={name}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              onChange={(e) => onChange(e)}
+              value={email}
+            />
+            <div className="small form-text">Use your UoM email</div>
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              minlength="6"
+              name="password"
+              onChange={(e) => onChange(e)}
+              value={password}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              minlength="6"
+              name="password2"
+              onChange={(e) => onChange(e)}
+              value={password2}
+            />
+          </div>
           <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            onChange={(e) => onChange(e)}
-            value={name}
+            type="submit"
+            value="Register"
+            className="btn btn-primary"
+            onClick={(e) => handleSubmit(e)}
           />
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            onChange={(e) => onChange(e)}
-            value={email}
-          />
-          <div className="small form-text">Use your UoM email</div>
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            minlength="6"
-            name="password"
-            onChange={(e) => onChange(e)}
-            value={password}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            minlength="6"
-            name="password2"
-            onChange={(e) => onChange(e)}
-            value={password2}
-          />
-        </div>
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-primary"
-          onClick={(e) => handleSubmit(e)}
-        />
-      </form>
-      <p className="mt-1">
-        Already have an account? <a href="login">Sign in</a>
-      </p>
+        </form>
+        <p className="mt-1">
+          Already have an account? <a href="login">Sign in</a>
+        </p>
+      </div>
     </Fragment>
   );
 }

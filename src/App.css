@@ -249,7 +249,7 @@
 }
 .table {
   margin: 0 auto;
-  background-color:#fff1c5;
+  background-color:#fff1c593;
 }
 .table th,
 .table td {
@@ -257,7 +257,7 @@
   text-align: left;
 }
 .table th {
-  background-color: #c59d5a;
+  background-color: #c59e5a88;
 }
 .form-group {
   margin: 1.2rem auto;
@@ -265,7 +265,7 @@
 .form-text {
   display: block;
   margin-top: 0.3rem;
-  color: #888;
+  color: #333;
 }
 .form input[type="text"],
 .form input[type="email"],
@@ -274,12 +274,20 @@
 .form select,
 .form textarea {
   display: block;
-  width: 50%;
-  padding: 0.4rem;
+  width: 100%;
+  padding: 0.7rem;
   font-size: 1.2rem;
   margin: 0 auto;
   border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.508);
 }
+
+.form input[type="text"]:focus,.form input[type="email"]:focus,.form input[type="password"]:focus,.form select:focus,.form textarea:focus{
+  outline:#e45826 solid 1px;
+  box-shadow: 0 0 20px #f0a500;
+}
+
 .form input[type="submit"] {
   font: inherit;
 }
@@ -362,10 +370,13 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-size: 400% 400%;
+  /* background-size: 400% 400%; */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: linear-gradient(180deg, rgba(255,244,224,1) 0%, rgba(255,191,155,1) 100%);
+  /* background-image: linear-gradient(180deg, rgba(255,244,224,1) 0%, rgba(255,191,155,1) 100%); */
+  /* background-color: #524f46; */
+  background-image: url(./img/mesh-578.png);
   color: #333;
 }
 a {
@@ -457,17 +468,51 @@ img {
   margin-top: 6rem;
   margin-bottom: 3rem;
   text-align: center;
+
 }
+
+.upload__btn{
+  display: flex;
+  gap:20px;
+}
+
 .upload__img-wrap {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.upload__img-box{
+  position: relative;
+  width: auto;
+  height: 100px;
 }
 
 .upload__img-wrap img {
-  height: 50px;
+  height: 100px;
   width: auto;
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
+.upload__img-wrap button{
+  position: absolute;
+  right:0;
+  background-color: #1b1a1747;
+}
+
+.card{
+  background-color: rgba(255, 255, 255, 0.348);
+  padding: 20px 30px;
+  border-radius: 20px;
+  max-width: 700px;
+  margin: 3rem auto;
+  backdrop-filter: blur(14px);
+}
+
+
+
+
 

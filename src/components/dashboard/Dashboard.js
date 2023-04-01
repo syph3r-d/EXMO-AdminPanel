@@ -65,62 +65,64 @@ const Dashboard = () => {
         </Fragment>
       ) : (
         <Fragment>
-          <h1 className="large text-primary">Dashboard</h1>
-          <p className="lead">
-            <i className="fa fa-user"></i> Welcome
-          </p>
-          <div className="profile-edit">
-            <Link href="create-profile.html" className="btn btn-light">
-              <i className="fas fa-user-circle text-primary"></i> Edit Profile
-            </Link>
-            <Link to="/create-project" className="btn btn-light">
-              <i className="fa fa-plus text-primary" aria-hidden="true"></i> Add
-              a Project
-            </Link>
-          </div>
-          <h2 className="mt-2 mb-2">Projects</h2>
-          {projects.length > 0 ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th className="hide-sm">Category</th>
-                  <th className="hide-sm">Location</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {projects.map((project) => (
-                  <tr key={project.id}>
-                    <td>{project.name}</td>
-                    <td className="hide-sm">{project.category}</td>
-                    <td className="hide-sm">{project.location}</td>
-                    <td>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => onEdit(project)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => onDelete(project.id)}
-                      >
-                        <i className="fa fa-times" aria-hidden="true"></i>
-                      </button>
-                    </td>
+          <div className="card">
+            <h1 className="large text-primary">Dashboard</h1>
+            <p className="lead">
+              <i className="fa fa-user"></i> Welcome
+            </p>
+            <div className="profile-edit">
+              <Link href="create-profile.html" className="btn btn-light">
+                <i className="fas fa-user-circle text-primary"></i> Edit Profile
+              </Link>
+              <Link to="/create-project" className="btn btn-light">
+                <i className="fa fa-plus text-primary" aria-hidden="true"></i>{" "}
+                Add a Project
+              </Link>
+            </div>
+            <h2 className="mt-2 mb-2">Projects</h2>
+            {projects.length > 0 ? (
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th className="hide-sm">Category</th>
+                    <th className="hide-sm">Location</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <h2>You have not created any projects yet</h2>
-          )}
+                </thead>
+                <tbody>
+                  {projects.map((project) => (
+                    <tr key={project.id}>
+                      <td>{project.name}</td>
+                      <td className="hide-sm">{project.category}</td>
+                      <td className="hide-sm">{project.location}</td>
+                      <td>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => onEdit(project)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => onDelete(project.id)}
+                        >
+                          <i className="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <h2>You have not created any projects yet</h2>
+            )}
 
-          <div className="mt-2">
-            <button className="btn btn-primary">
-              <i className="fas fa-user-minus"></i> Delete My Account
-            </button>
+            <div className="mt-2">
+              <button className="btn btn-primary">
+                <i className="fas fa-user-minus"></i> Delete My Account
+              </button>
+            </div>
           </div>
         </Fragment>
       )}

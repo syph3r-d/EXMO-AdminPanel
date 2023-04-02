@@ -5,7 +5,8 @@ import Spinner from "../layout/Spinner";
 import { Firestore } from "../../config/db";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import NotificationContext from "../../contexts/alertContext";
-import { deleteProject, deleteUserProjects } from "../../models/project";
+import { deleteProject, deleteUserProjects } from "../../models/project2";
+import { getProjects } from "../../models/project2";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,14 +19,23 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const data = await getDocs(
-        query(
-          collection(Firestore, "projects"),
-          where("userid", "==", currentUser.uid)
-        )
-      );
+      const data=await getProjects(currentUser.uid)
+      // const data = await getDocs(
+      //   query(
+      //     collection(Firestore, "projects"),
+      //     where("userid", "==", currentUser.uid)
+      //   )
+      // );
       setIsLoading(false);
-      setProjects(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      if (data.exists()) {
+        const projectData = data.val();
+        const projectArray = Object.keys(projectData).map((key) => ({
+          id: key,
+          ...projectData[key],
+        }));
+        setProjects(projectArray);
+      }
+      // setProjects(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
 
     fetchData();

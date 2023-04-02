@@ -5,7 +5,7 @@ import {
   projectUpdate,
   deleteImages,
   updateImages,
-} from "../../models/project";
+} from "../../models/project2";
 import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -80,6 +80,7 @@ const CreateProject = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
     if (update) {
       try {
         await projectUpdate(formData, project.id);
@@ -208,7 +209,7 @@ const CreateProject = () => {
                 </label>
               </div>
               <div className="upload__img-wrap">
-                {imgs.length > 0 ? (
+                {imgs?.length > 0 ? (
                   imgs.map((imgUrl, index) => (
                     <Fragment>
                       <div className="upload__img-box" key={index}>

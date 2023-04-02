@@ -65,6 +65,7 @@ function SignIn() {
               name="email"
               onChange={(e) => onChange(e)}
               value={email}
+              required
             />
             <div className="small form-text"></div>
           </div>
@@ -76,6 +77,7 @@ function SignIn() {
               name="password"
               onChange={(e) => onChange(e)}
               value={password}
+              required
             />
           </div>
           <input

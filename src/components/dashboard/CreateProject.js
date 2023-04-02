@@ -127,6 +127,7 @@ const CreateProject = () => {
               name="name"
               onChange={(e) => onChange(e)}
               value={name}
+              required
             />
           </div>
           <div className="form-group">
@@ -134,6 +135,7 @@ const CreateProject = () => {
               name="category"
               onChange={(e) => onChange(e)}
               value={category}
+              required
             >
               <option value="0">* Select Category</option>
               <option value="Mechanical">Mechanical</option>
@@ -151,6 +153,7 @@ const CreateProject = () => {
               name="department"
               onChange={(e) => onChange(e)}
               value={department}
+              required
             >
               <option value="0">* Select Department</option>
               <option value="Mechanical">Mechanical</option>
@@ -169,6 +172,7 @@ const CreateProject = () => {
               name="location"
               onChange={(e) => onChange(e)}
               value={location}
+              required
             />
           </div>
           <div className="form-group">

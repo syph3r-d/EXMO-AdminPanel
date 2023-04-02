@@ -19,13 +19,13 @@ const NotificationProvider = (props) => {
       window.scroll(0, 0);
       setNotificationText(text);
       setNotification(STATES.SUCCESS);
-      setTimeout(()=>clear(),3000);
+      setTimeout(()=>clear(),5000);
     };
   const error = (text) => {
       window.scroll(0, 0);
       setNotificationText(text);
       setNotification(STATES.ERROR);
-      setTimeout(()=>clear(),3000);
+      setTimeout(()=>clear(),5000);
     };
   const loading = (text) => {
       setNotificationText(text);

@@ -4,6 +4,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
+  deleteUser,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -22,17 +26,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Sign up a new user
-  const signUp = async (email, password) => {
+  const signUp = async (email, password, name) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      await updateProfile(auth.currentUser, { displayName: name });
       setCurrentUser(userCredential.user);
     } catch (error) {
-      const err={msg:error.message}
-      throw err
+      const err = { msg: error.message };
+      throw err;
     }
   };
 
@@ -43,10 +48,11 @@ export const AuthProvider = ({ children }) => {
         email,
         password
       );
+
       setCurrentUser(userCredential.user);
     } catch (error) {
-      const err={msg:error.message}
-      throw err
+      const err = { msg: error.message };
+      throw err;
     }
   };
 
@@ -56,7 +62,27 @@ export const AuthProvider = ({ children }) => {
       await signOut(auth);
       setCurrentUser(null);
     } catch (error) {
-      throw error
+      throw error;
+    }
+  };
+
+  const deleteAccount = async (password) => {
+    try {
+      //reauthenticate user
+      const user = auth.currentUser;
+      const credential = EmailAuthProvider.credential(
+        user.email,
+        password
+      );
+      await reauthenticateWithCredential(
+        auth.currentUser,
+        credential
+      );
+      await deleteUser(auth.currentUser);
+      await signOut(auth);
+      setCurrentUser(null);
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -65,6 +91,7 @@ export const AuthProvider = ({ children }) => {
     signIn,
     signOutUser,
     signUp,
+    deleteAccount,
   };
 
   return (

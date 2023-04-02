@@ -37,7 +37,7 @@ function SignUp() {
 
     try {
       setIsLoading(true);
-      await signUp(email, password);
+      await signUp(email, password,name);
       notification.success("Account Created Successfully");
       setIsLoading(false);
     } catch (error) {

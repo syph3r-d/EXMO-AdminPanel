@@ -2,24 +2,17 @@ import React, { Fragment, useEffect, useContext, useState } from "react";
 import { AuthContext } from "../auth/authContext";
 import { useNavigate, Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
-import { Firestore, Storage } from "../../config/db";
-import {
-  getDocs,
-  collection,
-  query,
-  where,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
-import { ref, deleteObject,listAll } from "firebase/storage";
+import { Firestore } from "../../config/db";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import NotificationContext from "../../contexts/alertContext";
+import { deleteProject, deleteUserProjects } from "../../models/project";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const notification = useContext(NotificationContext);
 
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, deleteAccount } = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -40,13 +33,7 @@ const Dashboard = () => {
 
   const onDelete = async (id) => {
     try {
-      await deleteDoc(doc(Firestore, "projects", id));
-      const storageRef = ref(Storage, `images/${id}/`);
-      const fileList = await listAll(storageRef);
-      
-      await Promise.all(fileList.items.map(async (fileRef) => {
-        await deleteObject(fileRef);
-      }));  
+      await deleteProject(id);
       setProjects(projects.filter((project) => project.id !== id));
       notification.success("Project Deleted");
     } catch (error) {
@@ -62,6 +49,24 @@ const Dashboard = () => {
       },
     });
   };
+
+  const onDeleteAccount = async () => {
+    const password = prompt("Please enter your password to confirm deletion");
+    if (password !== null) {
+      try {
+        setIsLoading(true);
+        await deleteUserProjects(currentUser.uid);
+        await deleteAccount(password);
+        setIsLoading(false);
+        notification.success("Account Deleted");
+      } catch (error) {
+        notification.error("Network Error");
+        console.log(error);
+      }
+    }
+  };
+
+
   return (
     <Fragment>
       {isLoading ? (
@@ -75,7 +80,7 @@ const Dashboard = () => {
           <div className="card">
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
-              <i className="fa fa-user"></i> Welcome
+              <i className="fa fa-user"></i> Welcome {currentUser.displayName}
             </p>
             <div className="profile-edit">
               <Link href="create-profile.html" className="btn btn-light">
@@ -126,7 +131,10 @@ const Dashboard = () => {
             )}
 
             <div className="mt-2">
-              <button className="btn btn-primary">
+              <button
+                className="btn btn-primary"
+                onClick={() => onDeleteAccount()}
+              >
                 <i className="fas fa-user-minus"></i> Delete My Account
               </button>
             </div>

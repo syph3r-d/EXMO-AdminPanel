@@ -6,38 +6,20 @@ import {
   updateDoc,
   setDoc,
   getDoc,
+  getDocs,
+  deleteDoc,
+  query,
+  where
 } from "firebase/firestore";
 import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
   deleteObject,
+  listAll,
 } from "firebase/storage";
 
-
-// export const projectSave = async (form) => {
-//   try {
-//     const storageRef =  ref(Storage, `/images/${form.name}`);
-//     const uploadTask = uploadBytesResumable(storageRef, file);
-//     const docRef = await addDoc(collection(Firestore, "projects"), form);
-//     console.log(`Project saved with ID: ${docRef.id}`);
-//     return docRef.id;
-//   } catch (error) {
-//     console.error("Error saving project:", error);
-//     throw error;
-//   }
-// };
-
-
-
-function getFileNameFromUrl(url) {
-  const match = url.match(/\/([^\/?#]+)[^\/]*$/);
-  if (match) {
-    return match[1];
-  }
-}
-
-export const projectSave = async (form, images,notification) => {
+export const projectSave = async (form, images, notification) => {
   try {
     const docRef = await addDoc(collection(Firestore, "projects"), form);
     console.log(`Project saved with ID: ${docRef.id}`);
@@ -47,8 +29,9 @@ export const projectSave = async (form, images,notification) => {
         const storageRef = ref(Storage, `images/${docRef.id}/${image.name}`);
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on("state_changed", (snapshot) => {
-          const progress =Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
           notification.loading(`Uploading ${image.name}: ${progress}%`);
         });
 
@@ -58,25 +41,10 @@ export const projectSave = async (form, images,notification) => {
       })
     );
 
-    form.imgs.push(...imageUrls)
+    form.imgs.push(...imageUrls);
 
-    // const storagePromises = images.map(async (img) => {
-    //   const storageRef = ref(Storage, `/images/${docRef.id}/${img.name}`);
-    //   const uploadTask = await uploadBytesResumable(storageRef, img);
-
-    //   // Get the download URL of the uploaded image
-    //   const snapshot = await getDownloadURL(uploadTask.ref);
-    //   const downloadURL = snapshot.toString();
-
-    //   // Add the download URL to the image object
-    //   form.imgs.push(downloadURL);
-    //   return uploadTask;
-    // });
-
-    // await Promise.all(storagePromises);
     console.log("All images uploaded successfully");
 
-    // Save the form with the image URLs to Firestore
     await setDoc(doc(Firestore, "projects", docRef.id), form);
     console.log("Form saved to Firestore with image URLs");
 
@@ -95,18 +63,6 @@ export const projectUpdate = async (form, id) => {
   }
 };
 
-// export const deleteImage = async (url,id) => {
-//   try {
-//     let name = url.substr(
-//       url.indexOf("%2F") + 3,
-//       url.indexOf("?") - (url.indexOf("%2F") + 3)
-//     );
-//     name = name.replace("%20", " ");
-//     const storageRef = ref(Storage, `/images/${id}/${name}`);
-//     await deleteObject(storageRef)
-//   } catch (error) {}
-// };
-
 export const deleteImages = async (urls, id) => {
   try {
     for (const url of urls) {
@@ -118,7 +74,7 @@ export const deleteImages = async (urls, id) => {
   } catch (error) {}
 };
 
-export const updateImages = async (projectId, images,notification) => {
+export const updateImages = async (projectId, images, notification) => {
   try {
     const projectRef = doc(Firestore, "projects", projectId);
     const projectDoc = await getDoc(projectRef);
@@ -136,8 +92,9 @@ export const updateImages = async (projectId, images,notification) => {
 
         // Log upload progress
         uploadTask.on("state_changed", (snapshot) => {
-          const progress =Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
           notification.loading(`Uploading ${image.name}: ${progress}%`);
         });
 
@@ -158,4 +115,28 @@ export const updateImages = async (projectId, images,notification) => {
   } catch (error) {
     console.error("Error updating project:", error);
   }
+};
+
+export const deleteUserProjects = async (id) => {
+  try {
+    const q = query(collection(Firestore, "projects"), where("userid", "==", id));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (project) => {
+        await deleteProject(project.id);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deleteProject = async (id) => {
+  await deleteDoc(doc(Firestore, "projects", id));
+  const storageRef = ref(Storage, `images/${id}/`);
+  const fileList = await listAll(storageRef);
+
+  await Promise.all(
+    fileList.items.map(async (fileRef) => {
+      await deleteObject(fileRef);
+    })
+  );
 };

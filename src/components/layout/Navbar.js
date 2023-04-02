@@ -9,6 +9,8 @@ const Navbar = () => {
     useEffect(() => {
       if (!(currentUser == null)) {
         setIsLogged(true)
+      }else{
+        setIsLogged(false)
       }
     }, [currentUser]);
 

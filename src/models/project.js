@@ -37,25 +37,43 @@ function getFileNameFromUrl(url) {
   }
 }
 
-export const projectSave = async (form, images) => {
+export const projectSave = async (form, images,notification) => {
   try {
     const docRef = await addDoc(collection(Firestore, "projects"), form);
     console.log(`Project saved with ID: ${docRef.id}`);
 
-    const storagePromises = images.map(async (img) => {
-      const storageRef = ref(Storage, `/images/${docRef.id}/${img.name}`);
-      const uploadTask = await uploadBytesResumable(storageRef, img);
+    const imageUrls = await Promise.all(
+      images.map(async (image) => {
+        const storageRef = ref(Storage, `images/${docRef.id}/${image.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, image);
+        uploadTask.on("state_changed", (snapshot) => {
+          const progress =Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          notification.loading(`Uploading ${image.name}: ${progress}%`);
+        });
 
-      // Get the download URL of the uploaded image
-      const snapshot = await getDownloadURL(uploadTask.ref);
-      const downloadURL = snapshot.toString();
+        await uploadTask;
+        const url = await getDownloadURL(storageRef);
+        return url;
+      })
+    );
 
-      // Add the download URL to the image object
-      form.imgs.push(downloadURL);
-      return uploadTask;
-    });
+    form.imgs.push(...imageUrls)
 
-    await Promise.all(storagePromises);
+    // const storagePromises = images.map(async (img) => {
+    //   const storageRef = ref(Storage, `/images/${docRef.id}/${img.name}`);
+    //   const uploadTask = await uploadBytesResumable(storageRef, img);
+
+    //   // Get the download URL of the uploaded image
+    //   const snapshot = await getDownloadURL(uploadTask.ref);
+    //   const downloadURL = snapshot.toString();
+
+    //   // Add the download URL to the image object
+    //   form.imgs.push(downloadURL);
+    //   return uploadTask;
+    // });
+
+    // await Promise.all(storagePromises);
     console.log("All images uploaded successfully");
 
     // Save the form with the image URLs to Firestore
@@ -72,7 +90,6 @@ export const projectSave = async (form, images) => {
 export const projectUpdate = async (form, id) => {
   try {
     await updateDoc(doc(Firestore, "projects", id), form);
-    console.log(form);
   } catch (error) {
     console.error(error);
   }

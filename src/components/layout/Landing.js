@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link,Navigate } from "react-router-dom";
+import {AuthContext} from '../auth/authContext'
+import { useContext } from "react";
 
 const Landing = () => {
+  const { currentUser, loading } = useContext(AuthContext);
+  if (currentUser != null && !loading) {
+   return <Navigate to="/dashboard" replace />
+  }
   return (
     <Fragment>
       <section className="landing">

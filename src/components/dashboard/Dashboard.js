@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useContext, useState } from "react";
 import { AuthContext } from "../auth/authContext";
 import { useNavigate, Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
-import { Firestore } from "../../config/db";
+import { Firestore, Storage } from "../../config/db";
 import {
   getDocs,
   collection,
@@ -11,6 +11,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { ref, deleteObject,listAll } from "firebase/storage";
 import NotificationContext from "../../contexts/alertContext";
 
 const Dashboard = () => {
@@ -40,6 +41,12 @@ const Dashboard = () => {
   const onDelete = async (id) => {
     try {
       await deleteDoc(doc(Firestore, "projects", id));
+      const storageRef = ref(Storage, `images/${id}/`);
+      const fileList = await listAll(storageRef);
+      
+      await Promise.all(fileList.items.map(async (fileRef) => {
+        await deleteObject(fileRef);
+      }));  
       setProjects(projects.filter((project) => project.id !== id));
       notification.success("Project Deleted");
     } catch (error) {

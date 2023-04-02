@@ -98,7 +98,7 @@ const CreateProject = () => {
       }
     } else {
       try {
-        await projectSave(formData, images);
+        await projectSave(formData, images,notification);
         notification.success("Project Created Successfully");
         setIsLoading(false);
         navigate("/dashboard");

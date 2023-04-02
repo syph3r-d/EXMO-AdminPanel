@@ -19,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const data=await getProjects(currentUser.uid)
+      const data = await getProjects(currentUser.uid);
       // const data = await getDocs(
       //   query(
       //     collection(Firestore, "projects"),
@@ -43,8 +43,10 @@ const Dashboard = () => {
 
   const onDelete = async (id) => {
     try {
+      setIsLoading(true);
       await deleteProject(id);
       setProjects(projects.filter((project) => project.id !== id));
+      setIsLoading(false);
       notification.success("Project Deleted");
     } catch (error) {
       notification.error("Network Error");
@@ -65,79 +67,93 @@ const Dashboard = () => {
     if (password !== null) {
       try {
         setIsLoading(true);
-        await deleteUserProjects(currentUser.uid);
+        const id = currentUser.uid;
         await deleteAccount(password);
+        await deleteUserProjects(id);
         setIsLoading(false);
         notification.success("Account Deleted");
       } catch (error) {
-        notification.error("Network Error");
+        setIsLoading(false);
+        notification.error("Invalid Password");
         console.log(error);
       }
     }
   };
 
-
   return (
     <Fragment>
-      {isLoading ? (
-        <Fragment>
-          <div className="alert-display">
-            <Spinner />
-          </div>
-        </Fragment>
-      ) : (
-        <Fragment>
           <div className="card">
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
               <i className="fa fa-user"></i> Welcome {currentUser.displayName}
             </p>
             <div className="profile-edit">
-              <Link href="create-profile.html" className="btn btn-light">
+              {/* <Link href="create-profile.html" className="btn btn-light">
                 <i className="fas fa-user-circle text-primary"></i> Edit Profile
-              </Link>
+              </Link> */}
               <Link to="/create-project" className="btn btn-light">
                 <i className="fa fa-plus text-primary" aria-hidden="true"></i>{" "}
                 Add a Project
               </Link>
             </div>
             <h2 className="mt-2 mb-2">Projects</h2>
-            {projects.length > 0 ? (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th className="hide-sm">Category</th>
-                    <th className="hide-sm">Location</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {projects.map((project) => (
-                    <tr key={project.id}>
-                      <td>{project.name}</td>
-                      <td className="hide-sm">{project.category}</td>
-                      <td className="hide-sm">{project.location}</td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => onEdit(project)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => onDelete(project.id)}
-                        >
-                          <i className="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {isLoading ? (
+              <Fragment>
+                  <Spinner />
+              </Fragment>
             ) : (
-              <h2>You have not created any projects yet</h2>
+              <Fragment>
+                {projects.length > 0 ? (
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th className="hide-sm">Category</th>
+                        <th className="hide-sm">Department</th>
+                        <th className="hide-sm">Location</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {projects.map((project) => (
+                        <tr key={project.id}>
+                          <td onClick={() => onEdit(project)}>
+                            {project.name}
+                          </td>
+                          <td
+                            className="hide-sm"
+                            onClick={() => onEdit(project)}
+                          >
+                            {project.category}
+                          </td>
+                          <td
+                            className="hide-sm"
+                            onClick={() => onEdit(project)}
+                          >
+                            {project.department}
+                          </td>
+                          <td
+                            className="hide-sm"
+                            onClick={() => onEdit(project)}
+                          >
+                            {project.location}
+                          </td>
+                          <td>
+                            <button
+                              className="btn btn-delete"
+                              onClick={() => onDelete(project.id)}
+                            >
+                              <i className="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <h2>You have not created any projects yet</h2>
+                )}
+              </Fragment>
             )}
 
             <div className="mt-2">
@@ -149,8 +165,6 @@ const Dashboard = () => {
               </button>
             </div>
           </div>
-        </Fragment>
-      )}
     </Fragment>
   );
 };

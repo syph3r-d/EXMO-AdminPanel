@@ -73,6 +73,7 @@ function SignUp() {
               name="name"
               onChange={(e) => onChange(e)}
               value={name}
+              required
             />
           </div>
           <div className="form-group">
@@ -82,27 +83,32 @@ function SignUp() {
               name="email"
               onChange={(e) => onChange(e)}
               value={email}
+              required
             />
             <div className="small form-text">Use your UoM email</div>
           </div>
           <div className="form-group">
             <input
+            required
               type="password"
               placeholder="Password"
               minlength="6"
               name="password"
               onChange={(e) => onChange(e)}
               value={password}
+              
             />
           </div>
           <div className="form-group">
             <input
+            required
               type="password"
               placeholder="Confirm Password"
               minlength="6"
               name="password2"
               onChange={(e) => onChange(e)}
               value={password2}
+              
             />
           </div>
           <input

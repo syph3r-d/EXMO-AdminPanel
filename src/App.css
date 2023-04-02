@@ -210,15 +210,23 @@
 .btn.btn-primary:hover {
   background: #e7693d;
 }
+.btn.btn-delete{
+  background: #df5151;
+}
+.btn.btn-delete:hover{
+  background: #de2b2b;
+}
+
+
 .btn:hover {
   background: #524f46;
   color: #fff;
 }
-.alert-display{
+.alert-display {
   position: fixed;
   z-index: 1;
-  top:0.5 px;
-  width:100%;
+  top: 0.5 px;
+  width: 100%;
   margin: 0 auto;
 }
 .alert {
@@ -226,7 +234,7 @@
   max-width: fit-content;
   margin: auto;
   margin-top: 10px;
-  top:0;
+  top: 0;
   opacity: 0.9;
   background: #f4f4f4;
   color: #333;
@@ -249,15 +257,37 @@
 }
 .table {
   margin: 0 auto;
-  background-color:#fff1c593;
+  background-color: #ffffffb4;
+  border-radius: 1em;
+  border-collapse: collapse;
+  overflow: hidden;
+
 }
 .table th,
 .table td {
   padding: 1rem;
   text-align: left;
 }
+
+.table tr:nth-child(even) {
+  background-color: #f0f0f0b4;
+}
+
+.table tr{
+  transition: all 0.3s ease-in;
+}
+
+.table tr:hover{
+  cursor: pointer;
+  background-color: #dad3beb4;
+}
+
 .table th {
-  background-color: #c59e5a88;
+  background-color: #1b1a17ec;
+  color: #fff;
+  
+  
+  
 }
 .form-group {
   margin: 1.2rem auto;
@@ -283,8 +313,12 @@
   background-color: rgba(255, 255, 255, 0.508);
 }
 
-.form input[type="text"]:focus,.form input[type="email"]:focus,.form input[type="password"]:focus,.form select:focus,.form textarea:focus{
-  outline:#e45826 solid 1px;
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form input[type="password"]:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: #e45826 solid 1px;
   box-shadow: 0 0 20px #f0a500;
 }
 
@@ -344,13 +378,13 @@
     grid-template-columns: 1fr;
   }
   .form input[type="text"],
-.form input[type="email"],
-.form input[type="password"],
-.form input[type="date"],
-.form select,
-.form textarea {
-  width: 100%;
-}
+  .form input[type="email"],
+  .form input[type="password"],
+  .form input[type="date"],
+  .form select,
+  .form textarea {
+    width: 100%;
+  }
 }
 @media (max-width: 500px) {
   .navbar {
@@ -468,12 +502,11 @@ img {
   margin-top: 6rem;
   margin-bottom: 3rem;
   text-align: center;
-
 }
 
-.upload__btn{
+.upload__btn {
   display: flex;
-  gap:20px;
+  gap: 20px;
 }
 
 .upload__img-wrap {
@@ -484,7 +517,7 @@ img {
   margin-top: 20px;
 }
 
-.upload__img-box{
+.upload__img-box {
   position: relative;
   width: auto;
   height: 100px;
@@ -497,13 +530,13 @@ img {
   margin-bottom: 10px;
 }
 
-.upload__img-wrap button{
+.upload__img-wrap button {
   position: absolute;
-  right:0;
+  right: 0;
   background-color: #1b1a1747;
 }
 
-.card{
+.card {
   background-color: rgba(255, 255, 255, 0.348);
   padding: 20px 30px;
   border-radius: 20px;
@@ -511,8 +544,3 @@ img {
   margin: 3rem auto;
   backdrop-filter: blur(14px);
 }
-
-
-
-
-

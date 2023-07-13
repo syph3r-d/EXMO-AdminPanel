@@ -5,7 +5,7 @@ import {
   projectUpdate,
   deleteImages,
   updateImages,
-} from "../../models/project2";
+} from "../../models/project";
 import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";

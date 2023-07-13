@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import { Link,Navigate } from "react-router-dom";
-import {AuthContext} from '../auth/authContext'
+// import {AuthContext} from '../auth/authContext'
+import {useAuthState} from '../../contexts'
 import { useContext } from "react";
 
 const Landing = () => {
-  const { currentUser, loading } = useContext(AuthContext);
-  if (currentUser != null && !loading) {
+  const { userDetails,loading } = useAuthState();
+  if (userDetails != "" && !loading) {
    return <Navigate to="/dashboard" replace />
   }
   return (

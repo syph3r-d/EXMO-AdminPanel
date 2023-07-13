@@ -29,7 +29,7 @@ class Login(BaseModel):
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
-db = client['test']
+db = client['exmo']
 collection = db['users']
 
 # Define a function to create access tokens
@@ -90,7 +90,7 @@ def authenticate_user(login: Login):
     # Generate a JWT
     access_token = create_access_token(login.username)
     # Return the JWT
-    return {"access_token": access_token}
+    return { access_token}
 
 # Define an endpoint to get the current user's name
 

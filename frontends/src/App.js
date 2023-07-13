@@ -5,11 +5,11 @@ import Landing from "./components/layout/Landing";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Signin from "./components/auth/Signin";
 import Register from "./components/auth/Register";
-import AuthProvider from "./components/auth/authContext";
+import {AuthProvider} from "./contexts";
 import { auth } from "./config/db";
 import { NotificationProvider } from "./contexts/alertContext";
 import Alert from "./components/layout/Alert";
-import Dashboard from "./components/dashboard/Dashboard";
+// import Dashboard from "./components/dashboard/Dashboard";
 import CreateProject from "./components/dashboard/CreateProject";
 import ProtectedRoute from "./components/route/Protected";
 
@@ -20,7 +20,7 @@ function App() {
       <NotificationProvider>
         <Router>
           <Fragment>
-            <Navbar />
+            {/* <Navbar /> */}
             <Routes>
               <Route exact path="/" element={<Landing />} />
 
@@ -44,7 +44,7 @@ function App() {
                   </section>
                 }
               />
-              <Route
+              {/* <Route
                 exact
                 path="/dashboard"
                 element={
@@ -55,7 +55,7 @@ function App() {
                     </section>
                   </ProtectedRoute>
                 }
-              />
+              /> */}
               <Route
                 exact
                 path="/create-project"

@@ -6,8 +6,8 @@ from pymongo import MongoClient
 from users import get_current_user
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
-db = client["test"]
+client = MongoClient("mongodb://localhost:27017")
+db = client["exmo"]
 collection = db["projects"]
 
 router = APIRouter()

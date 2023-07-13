@@ -4,37 +4,40 @@ import { AuthContext } from "./authContext";
 import NotificationContext from "../../contexts/alertContext";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../layout/Spinner";
+// import { loginUser, useAuthState, useAuthDispatch } from "../contexts/context";
+import { loginUser, useAuthDispatch, useAuthState } from "../../contexts";
 
 function SignIn() {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-  const { email, password } = formData;
-
-  const [isLoading, setIsLoading] = useState(false);
+  const { username, password } = formData;
 
   const navigate = useNavigate();
 
-  const { currentUser, signIn } = useContext(AuthContext);
+  // const { userDetails, signIn } = useContext(AuthContext);
+  const { userDetails,loading } = useAuthState();
 
   useEffect(() => {
-    if (!(currentUser == null)) {
+    if (!(userDetails == "")) {
       navigate("/dashboard");
     }
-  }, [currentUser]);
+  }, [userDetails]);
 
   const notification = useContext(NotificationContext);
 
+  const dispatch = useAuthDispatch(); //get the dispatch method from the useDispatch custom hook
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let payload = { username, password };
     try {
-      setIsLoading(true);
-      await signIn(email, password);
+      let response = await loginUser(dispatch, payload); //loginUser action makes the request and handles all the neccessary state changes
+      console.log(response);
+      if (!response) return;
+      // window.location = "/dashboard";
     } catch (error) {
-      setIsLoading(false);
-      notification.error(error.msg);
       console.log(error);
     }
   };
@@ -45,7 +48,7 @@ function SignIn() {
 
   return (
     <Fragment>
-      {isLoading ? (
+      {loading ? (
         <Fragment>
           <div className="alert-display">
             <Spinner />
@@ -62,9 +65,9 @@ function SignIn() {
             <input
               type="email"
               placeholder="Email Address"
-              name="email"
+              name="username"
               onChange={(e) => onChange(e)}
-              value={email}
+              value={username}
               required
             />
             <div className="small form-text"></div>

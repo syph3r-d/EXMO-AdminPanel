@@ -10,24 +10,24 @@ export enum ECrowdStatus {
 }
 
 export interface ILocation {
-  building: string;
+  building?: string;
   floor: number;
-  section: string;
+  section?: string;
   latitude: number;
   longitude: number;
 }
 
 export interface IEvent {
   title: string;
-  subtitle: string;
-  thumbnail: string;
+  subtitle?: string;
+  thumbnail?: string;
+  displayImage?: string;
   status: EStatus;
   location: ILocation;
   faculty: string;
   department: string;
-  displayImage: string;
   caption: string;
-  description: string;
+  description?: string;
   hours: [
     {
       startTime: number;
@@ -37,15 +37,22 @@ export interface IEvent {
   images: [
     {
       url: string;
-      caption: string;
+      caption?: string;
     }
   ];
-  team: [
+  team?: [
     {
       name: string;
       title: string;
     }
   ];
+}
+
+export interface IPlace {
+  title?: string;
+  status: EStatus;
+  location: ILocation;
+  crowdStatus?: ECrowdStatus;
 }
 
 export interface IExhibit extends IEvent {}
@@ -54,19 +61,8 @@ export interface IBootCamp extends IEvent {}
 
 export interface IProgram extends IEvent {}
 
-export interface ICafeteria {
-  title: string;
-  status: EStatus;
-  location: ILocation;
-  crowdStatus: ECrowdStatus;
-}
+export interface ICafeteria extends IPlace {}
 
-export interface ICashATM {
-  bank: string;
-  location: ILocation;
-}
+export interface ICashATM extends IPlace {}
 
-export interface IWashroom {
-  status: EStatus;
-  location: ILocation;
-}
+export interface IWashroom extends IPlace {}

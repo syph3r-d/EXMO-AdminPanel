@@ -56,6 +56,10 @@ const Exhibits = () => {
       },
     });
   };
+
+  const onView = (id) => {
+    navigate(`/exhibit/${id}`);
+  };
   return (
     <Fragment>
       <div className="card">
@@ -93,10 +97,10 @@ const Exhibits = () => {
                 <tbody>
                   {projects.map((project) => (
                     <tr key={project.id}>
-                      <td onClick={() => onEdit(project)}>{project.title}</td>
-                      <td className="hide-sm">{project.faculty}</td>
-                      <td className="hide-sm">{project.department}</td>
-                      <td className="hide-sm">{project.status}</td>
+                      <td onClick={() => onView(project.id)}>{project.title}</td>
+                      <td onClick={() => onView(project.id)} className="hide-sm">{project.faculty}</td>
+                      <td onClick={() => onView(project.id)} className="hide-sm">{project.department}</td>
+                      <td onClick={() => onView(project.id)} className="hide-sm">{project.status}</td>
                       <td>
                         <div style={{ display: "flex" }}>
                           <button

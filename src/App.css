@@ -584,3 +584,42 @@ img {
 .twocolumns{
   display: flex;
 }
+
+.subtitle{
+  font-size:large;
+}
+
+.thumbnail{
+  height:300px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.thumbnail img{
+  height: 100%;
+  object-fit: contain;
+}
+
+.heading{
+  display: flex;
+  justify-content: space-around;
+}
+
+.larger{
+  max-width: 1300px;
+}
+
+.description{
+  margin: 20px 0px;
+}
+
+.details{
+  height: fit-content;
+  margin: auto 0;
+}
+
+.displayimages{
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  gap:20px;
+}

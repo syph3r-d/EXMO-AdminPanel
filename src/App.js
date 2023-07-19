@@ -13,8 +13,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import CreateProject from "./components/dashboard/CreateProject";
 import ProtectedRoute from "./components/route/Protected";
 import Exhibits from "./components/dashboard/Exhibits";
-import Events from "./components/dashboard/Events";
-import CreateEvent from "./components/dashboard/CreateEvent";
+import ExhibitView from "./components/dashboard/ExhibitView";
 
 function App() {
 
@@ -73,12 +72,12 @@ function App() {
               />
               <Route
                 exact
-                path="/events"
+                path="/exhibit/:id"
                 element={
                   <ProtectedRoute>
                     <section className="container">
                       <Alert />
-                      <Events />
+                      <ExhibitView />
                     </section>
                   </ProtectedRoute>
                 }
@@ -91,18 +90,6 @@ function App() {
                     <section className="container">
                       <Alert />
                       <CreateProject />
-                    </section>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                exact
-                path="/create-event"
-                element={
-                  <ProtectedRoute>
-                    <section className="container">
-                      <Alert />
-                      <CreateEvent />
                     </section>
                   </ProtectedRoute>
                 }

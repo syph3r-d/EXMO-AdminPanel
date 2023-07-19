@@ -1,5 +1,5 @@
 import { Firestore, Storage } from "../config/db";
-import { getDatabase,  push, set, update, remove, get } from "firebase/database";
+import { getDatabase, push, set, update, remove, get } from "firebase/database";
 import {
   collection,
   addDoc,
@@ -10,7 +10,7 @@ import {
   getDocs,
   deleteDoc,
   query,
-  where
+  where,
 } from "firebase/firestore";
 import {
   ref,
@@ -19,6 +19,12 @@ import {
   deleteObject,
   listAll,
 } from "firebase/storage";
+
+export const projectGet = async (id) => {
+  const docRef = doc(Firestore, "exhibits", id);
+  const docSnap = await getDoc(docRef);
+  return docSnap.data();
+};
 
 export const projectSave = async (form, images, notification) => {
   try {
@@ -42,7 +48,6 @@ export const projectSave = async (form, images, notification) => {
     );
 
     form.imgs.push(...imageUrls);
-
 
     await setDoc(doc(Firestore, "projects", docRef.id), form);
 
@@ -117,10 +122,13 @@ export const updateImages = async (projectId, images, notification) => {
 
 export const deleteUserProjects = async (id) => {
   try {
-    const q = query(collection(Firestore, "projects"), where("userid", "==", id));
+    const q = query(
+      collection(Firestore, "projects"),
+      where("userid", "==", id)
+    );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (project) => {
-        await deleteProject(project.id);
+      await deleteProject(project.id);
     });
   } catch (error) {
     console.error(error);

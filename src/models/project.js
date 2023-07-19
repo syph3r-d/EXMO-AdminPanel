@@ -28,7 +28,7 @@ export const projectGet = async (id) => {
 
 export const projectSave = async (form, images, notification) => {
   try {
-    const docRef = await addDoc(collection(Firestore, "projects"), form);
+    const docRef = await addDoc(collection(Firestore, "exhibits"), form);
 
     const imageUrls = await Promise.all(
       images.map(async (image) => {
@@ -49,7 +49,7 @@ export const projectSave = async (form, images, notification) => {
 
     form.imgs.push(...imageUrls);
 
-    await setDoc(doc(Firestore, "projects", docRef.id), form);
+    await setDoc(doc(Firestore, "exhibits", docRef.id), form);
 
     return docRef.id;
   } catch (error) {
@@ -60,7 +60,7 @@ export const projectSave = async (form, images, notification) => {
 
 export const projectUpdate = async (form, id) => {
   try {
-    await updateDoc(doc(Firestore, "projects", id), form);
+    await updateDoc(doc(Firestore, "exhibits", id), form);
   } catch (error) {
     console.error(error);
   }
@@ -79,7 +79,7 @@ export const deleteImages = async (urls, id) => {
 
 export const updateImages = async (projectId, images, notification) => {
   try {
-    const projectRef = doc(Firestore, "projects", projectId);
+    const projectRef = doc(Firestore, "exhibits", projectId);
     const projectDoc = await getDoc(projectRef);
 
     if (!projectDoc.exists()) {
@@ -123,7 +123,7 @@ export const updateImages = async (projectId, images, notification) => {
 export const deleteUserProjects = async (id) => {
   try {
     const q = query(
-      collection(Firestore, "projects"),
+      collection(Firestore, "exhibits"),
       where("userid", "==", id)
     );
     const querySnapshot = await getDocs(q);
@@ -136,7 +136,7 @@ export const deleteUserProjects = async (id) => {
 };
 
 export const deleteProject = async (id) => {
-  await deleteDoc(doc(Firestore, "projects", id));
+  await deleteDoc(doc(Firestore, "exhibits", id));
   const storageRef = ref(Storage, `images/${id}/`);
   const fileList = await listAll(storageRef);
 

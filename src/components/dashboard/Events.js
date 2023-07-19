@@ -8,7 +8,7 @@ import NotificationContext from "../../contexts/alertContext";
 import { deleteProject, deleteUserProjects } from "../../models/project";
 import { getProjects } from "../../models/project";
 
-const Exhibits = () => {
+const Events = () => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -24,12 +24,11 @@ const Exhibits = () => {
       setIsLoading(true);
       const data = await getDocs(
         query(
-          collection(Firestore, "exhibits")
-          // where("userid", "==", currentUser.uid)
+          collection(Firestore, "projects"),
+          where("userid", "==", currentUser.uid)
         )
       );
       setIsLoading(false);
-      console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       setProjects(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
 
@@ -39,8 +38,8 @@ const Exhibits = () => {
   const onDelete = async (id) => {
     try {
       setIsLoading(true);
-      // await deleteProject(id);
-      // setProjects(projects.filter((project) => project.id !== id));
+      await deleteProject(id);
+      setProjects(projects.filter((project) => project.id !== id));
       setIsLoading(false);
       notification.success("Project Deleted");
     } catch (error) {
@@ -59,7 +58,7 @@ const Exhibits = () => {
   return (
     <Fragment>
       <div className="card">
-        <h1 className="large text-primary">Exhibits</h1>
+        <h1 className="large text-primary">Events</h1>
         <p className="lead">
           <i className="fa fa-user"></i> Welcome {currentUser.displayName}
         </p>
@@ -67,12 +66,12 @@ const Exhibits = () => {
           {/* <Link href="create-profile.html" className="btn btn-light">
                 <i className="fas fa-user-circle text-primary"></i> Edit Profile
               </Link> */}
-          <Link to="/create-project" className="btn btn-light">
+          <Link to="/create-event" className="btn btn-light">
             <i className="fa fa-plus text-primary" aria-hidden="true"></i> Add
-            an Exhibit
+            an Event
           </Link>
         </div>
-        <h2 className="mt-2 mb-2">Exhbitis</h2>
+        <h2 className="mt-2 mb-2">Events</h2>
         {isLoading ? (
           <Fragment>
             <Spinner />
@@ -84,41 +83,39 @@ const Exhibits = () => {
                 <thead>
                   <tr>
                     <th>Title</th>
-                    <th className="hide-sm">Faculty</th>
+                    <th className="hide-sm">Category</th>
                     <th className="hide-sm">Department</th>
-                    <th className="hide-sm">Status</th>
+                    <th className="hide-sm">Location</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   {projects.map((project) => (
                     <tr key={project.id}>
-                      <td onClick={() => onEdit(project)}>{project.title}</td>
-                      <td className="hide-sm">{project.faculty}</td>
-                      <td className="hide-sm">{project.department}</td>
-                      <td className="hide-sm">{project.status}</td>
+                      <td onClick={() => onEdit(project)}>{project.name}</td>
+                      <td className="hide-sm" onClick={() => onEdit(project)}>
+                        {project.category}
+                      </td>
+                      <td className="hide-sm" onClick={() => onEdit(project)}>
+                        {project.department}
+                      </td>
+                      <td className="hide-sm" onClick={() => onEdit(project)}>
+                        {project.location}
+                      </td>
                       <td>
-                        <div style={{ display: "flex" }}>
-                          <button
-                            className="btn"
-                            onClick={() => onEdit(project.id)}
-                          >
-                            <i className="fa fa-marker" aria-hidden="true"></i>
-                          </button>
-                          <button
-                            className="btn btn-delete"
-                            onClick={() => onDelete(project.id)}
-                          >
-                            <i className="fa fa-times" aria-hidden="true"></i>
-                          </button>
-                        </div>
+                        <button
+                          className="btn btn-delete"
+                          onClick={() => onDelete(project.id)}
+                        >
+                          <i className="fa fa-times" aria-hidden="true"></i>
+                        </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             ) : (
-              <h2>You have not created any projects yet</h2>
+              <h2>You have not created any events yet</h2>
             )}
           </Fragment>
         )}
@@ -127,4 +124,4 @@ const Exhibits = () => {
   );
 };
 
-export default Exhibits;
+export default Events;

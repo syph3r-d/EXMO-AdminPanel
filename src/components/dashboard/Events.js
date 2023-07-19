@@ -8,7 +8,7 @@ import NotificationContext from "../../contexts/alertContext";
 import { deleteProject, deleteUserProjects } from "../../models/project";
 import { getProjects } from "../../models/project";
 
-const Exhibits = () => {
+const Events = () => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +58,7 @@ const Exhibits = () => {
   return (
     <Fragment>
       <div className="card">
-        <h1 className="large text-primary">Exhibits</h1>
+        <h1 className="large text-primary">Events</h1>
         <p className="lead">
           <i className="fa fa-user"></i> Welcome {currentUser.displayName}
         </p>
@@ -66,12 +66,12 @@ const Exhibits = () => {
           {/* <Link href="create-profile.html" className="btn btn-light">
                 <i className="fas fa-user-circle text-primary"></i> Edit Profile
               </Link> */}
-          <Link to="/create-project" className="btn btn-light">
+          <Link to="/create-event" className="btn btn-light">
             <i className="fa fa-plus text-primary" aria-hidden="true"></i> Add
-            an Exhibit
+            an Event
           </Link>
         </div>
-        <h2 className="mt-2 mb-2">Exhbitis</h2>
+        <h2 className="mt-2 mb-2">Events</h2>
         {isLoading ? (
           <Fragment>
             <Spinner />
@@ -115,7 +115,7 @@ const Exhibits = () => {
                 </tbody>
               </table>
             ) : (
-              <h2>You have not created any projects yet</h2>
+              <h2>You have not created any events yet</h2>
             )}
           </Fragment>
         )}
@@ -124,4 +124,4 @@ const Exhibits = () => {
   );
 };
 
-export default Exhibits;
+export default Events;

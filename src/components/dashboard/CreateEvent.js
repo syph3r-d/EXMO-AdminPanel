@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import NotificationContext from "../../contexts/alertContext";
 import { set } from "firebase/database";
 
-const CreateProject = () => {
+const CreateEvent = () => {
   const { currentUser } = useContext(AuthContext);
   const [update, setUpdate] = useState(false);
   const [formData, setFormData] = useState({
@@ -402,4 +402,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default CreateEvent;

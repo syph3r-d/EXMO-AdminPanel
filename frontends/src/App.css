@@ -301,6 +301,7 @@
 .form input[type="email"],
 .form input[type="password"],
 .form input[type="date"],
+.form input[type="datetime-local"],
 .form select,
 .form textarea {
   display: block;
@@ -543,4 +544,43 @@ img {
   max-width: 700px;
   margin: 3rem auto;
   backdrop-filter: blur(14px);
+}
+
+.panels{
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
+  gap:20px;
+  place-items: center;
+  width: 330px;
+  margin: 0px auto;
+}
+
+.panel{
+  background-color: rgba(255, 255, 255, 0.348);
+  padding: 20px 30px;
+  aspect-ratio: 1/1;
+  border-radius: 20px;
+  width: 150px;
+  backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.panel:hover{
+  background-color: rgba(0, 0, 0, 0.548);
+  cursor: pointer;
+  color: white;
+}
+
+.panel p{
+  height: fit-content;
+  margin: auto 0px;
+  font-size: 1.4rem;
+  line-height: 50px;
+}
+
+.twocolumns{
+  display: flex;
 }

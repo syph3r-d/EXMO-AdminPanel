@@ -28,7 +28,7 @@ const Navbar = () => {
           </h1>
         </div>
         <ul>
-            {isLogged ? (<Fragment><li><Link to="/dashboard"><i className="fas fa-user"></i> Dashboard</Link></li>
+            {isLogged ? (<Fragment><li><Link to="/dashboard"><i class="fa-solid fa-border-all"></i> Control Panel</Link></li>
           <li><Link onClick={()=>handlelogout()}><i className="fas fa-sign-out-alt"></i> Logout</Link></li></Fragment>) : (<Fragment><li><Link to="/register">Register</Link></li>
           <li><Link to="/login">Login</Link></li></Fragment>)}
         </ul>

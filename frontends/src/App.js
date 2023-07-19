@@ -12,6 +12,7 @@ import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProject from "./components/dashboard/CreateProject";
 import ProtectedRoute from "./components/route/Protected";
+import Exhibits from "./components/dashboard/Exhibits";
 
 function App() {
 
@@ -52,6 +53,18 @@ function App() {
                     <section className="container">
                       <Alert />
                       <Dashboard />
+                    </section>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/exhibits"
+                element={
+                  <ProtectedRoute>
+                    <section className="container">
+                      <Alert />
+                      <Exhibits />
                     </section>
                   </ProtectedRoute>
                 }

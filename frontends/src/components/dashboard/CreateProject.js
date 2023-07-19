@@ -10,15 +10,30 @@ import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import NotificationContext from "../../contexts/alertContext";
+import { Map } from "../utils/Map";
+import { set } from "firebase/database";
 
 const CreateProject = () => {
   const { currentUser } = useContext(AuthContext);
   const [update, setUpdate] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    category: "",
+    title: "",
+    subtitle: "",
+    faculty: "",
     department: "",
-    location: "",
+    thumbnail: null,
+    location: {
+      lat: "",
+      lng: "",
+      title: "",
+      subtitle: "",
+    },
+    hours: {
+      start: "",
+      end: "",
+    },
+    team: [],
+    status: "",
     description: "",
     imgs: [],
     userid: currentUser.uid,
@@ -48,7 +63,20 @@ const CreateProject = () => {
 
   const notification = useContext(NotificationContext);
 
-  const { name, category, department, location, description, imgs } = formData;
+  const {
+    title,
+    subtitle,
+    faculty,
+    thumbnail,
+    hours,
+    team,
+    status,
+    category,
+    department,
+    location,
+    description,
+    imgs,
+  } = formData;
 
   const handleImageChange = (e) => {
     const fileList = Array.from(e.target.files);
@@ -80,7 +108,7 @@ const CreateProject = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     if (update) {
       try {
         await projectUpdate(formData, project.id);
@@ -99,7 +127,7 @@ const CreateProject = () => {
       }
     } else {
       try {
-        await projectSave(formData, images,notification);
+        await projectSave(formData, images, notification);
         notification.success("Project Created Successfully");
         setIsLoading(false);
         navigate("/dashboard");
@@ -110,10 +138,26 @@ const CreateProject = () => {
     }
   };
 
+  const onTimeChange = (e) => {
+    setFormData({
+      ...formData,
+      hours: { ...hours, [e.target.name]: e.target.value },
+    });
+    console.log(hours);
+  };
+  const handleThumbChange = (e) => {
+    console.log(URL.createObjectURL(e.target.files[0]));
+    setFormData({
+      ...formData,
+      thumbnail: URL.createObjectURL(e.target.files[0]),
+    });
+    console.log(thumbnail);
+  };
+
   return (
     <Fragment>
       <div className="card">
-        <h1 className="large text-primary">Add a Project</h1>
+        <h1 className="large text-primary">Add an Exhibit</h1>
         <p className="lead">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
           asperiores!
@@ -123,14 +167,106 @@ const CreateProject = () => {
           <div className="form-group">
             <input
               type="text"
-              placeholder="* Project Title"
-              name="name"
+              placeholder="* Exhibit Title"
+              name="title"
               onChange={(e) => onChange(e)}
-              value={name}
+              value={title}
               required
             />
           </div>
           <div className="form-group">
+            <input
+              type="text"
+              placeholder="* Exhibit Sub-Title"
+              name="subtitle"
+              onChange={(e) => onChange(e)}
+              value={subtitle}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="* Faculty"
+              name="faculty"
+              onChange={(e) => onChange(e)}
+              value={faculty}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Team"
+              name="team"
+              onChange={(e) => onChange(e)}
+              value={team}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Status"
+              name="status"
+              onChange={(e) => onChange(e)}
+              value={status}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="upload__btn">
+              <h4>Thumbnail :</h4>
+              <input
+                type="file"
+                accept="image/*"
+                data-max_length="20"
+                className="upload__inputfile"
+                onChange={handleThumbChange}
+              />
+            </label>
+            <div className="upload__img-wrap">
+              {thumbnail === null ? (
+                <Fragment></Fragment>
+              ) : (
+                <div className="upload__img-box">
+                  <img src={thumbnail} alt="Thumbnail" />
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() =>
+                      setFormData({ ...formData, thumbnail: null })
+                    }
+                  >
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="twocolumns">
+            <div className="form-group">
+              <label htmlFor="start">Start Time</label>
+              <input
+                type="datetime-local"
+                name="start"
+                onChange={(e) => onTimeChange(e)}
+                value={hours.start}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="end">End Time</label>
+              <input
+                type="datetime-local"
+                name="end"
+                onChange={(e) => onTimeChange(e)}
+                value={hours.end}
+                required
+              />
+            </div>
+          </div>
+          {/* <div className="form-group">
             <select
               name="category"
               onChange={(e) => onChange(e)}
@@ -147,7 +283,7 @@ const CreateProject = () => {
               <option value="Compettion">Compettion</option>
               <option value="Other">Other</option>
             </select>
-          </div>
+          </div> */}
           <div className="form-group">
             <select
               name="department"
@@ -174,6 +310,7 @@ const CreateProject = () => {
               value={location}
               required
             />
+            {/* <Map location={{lat: 18.5204, lng: 73.8567}}  /> */}
           </div>
           <div className="form-group">
             <textarea
@@ -189,12 +326,12 @@ const CreateProject = () => {
             Give people an idea of your project
           </small>
           {isLoading ? (
-                  <Fragment>
-                    <Spinner />
-                  </Fragment>
-                ) : (
-                  <Fragment></Fragment>
-                )}
+            <Fragment>
+              <Spinner />
+            </Fragment>
+          ) : (
+            <Fragment></Fragment>
+          )}
           <div className="form-group">
             <div className="upload__box">
               <div className="upload__btn-box">
@@ -209,7 +346,6 @@ const CreateProject = () => {
                     className="upload__inputfile"
                     onChange={handleImageChange}
                   />
-                 
                 </label>
               </div>
               <div className="upload__img-wrap">

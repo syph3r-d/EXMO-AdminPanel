@@ -84,78 +84,24 @@ const Dashboard = () => {
   return (
     <Fragment>
           <div className="card">
-            <h1 className="large text-primary">Dashboard</h1>
+            <h1 className="large text-primary">Control Panel</h1>
             <p className="lead">
               <i className="fa fa-user"></i> Welcome {currentUser.displayName}
             </p>
-            <div className="profile-edit">
-              {/* <Link href="create-profile.html" className="btn btn-light">
-                <i className="fas fa-user-circle text-primary"></i> Edit Profile
-              </Link> */}
-              <Link to="/create-project" className="btn btn-light">
-                <i className="fa fa-plus text-primary" aria-hidden="true"></i>{" "}
-                Add a Project
-              </Link>
-            </div>
-            <h2 className="mt-2 mb-2">Projects</h2>
-            {isLoading ? (
-              <Fragment>
-                  <Spinner />
-              </Fragment>
-            ) : (
-              <Fragment>
-                {projects.length > 0 ? (
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th className="hide-sm">Category</th>
-                        <th className="hide-sm">Department</th>
-                        <th className="hide-sm">Location</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {projects.map((project) => (
-                        <tr key={project.id}>
-                          <td onClick={() => onEdit(project)}>
-                            {project.name}
-                          </td>
-                          <td
-                            className="hide-sm"
-                            onClick={() => onEdit(project)}
-                          >
-                            {project.category}
-                          </td>
-                          <td
-                            className="hide-sm"
-                            onClick={() => onEdit(project)}
-                          >
-                            {project.department}
-                          </td>
-                          <td
-                            className="hide-sm"
-                            onClick={() => onEdit(project)}
-                          >
-                            {project.location}
-                          </td>
-                          <td>
-                            <button
-                              className="btn btn-delete"
-                              onClick={() => onDelete(project.id)}
-                            >
-                              <i className="fa fa-times" aria-hidden="true"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                ) : (
-                  <h2>You have not created any projects yet</h2>
-                )}
-              </Fragment>
-            )}
+              <div className="panels">
+                <Link to="/exhibits" className="panel">
+                  <p><i class="fa-regular fa-lightbulb fa-2xl"></i> <br />Exhibits</p>
+                </Link>
+                <Link to="/events" className="panel">
+                  <p><i class="fa-regular fa-clock fa-2xl"></i> <br />Events</p>
+                </Link>
+                <Link to="/restrooms" className="panel">
+                  <p><i class="fa-solid fa-restroom fa-2xl"></i> <br />Washrooms</p>
+                </Link>
+                <Link to="/canteens" className="panel">
+                  <p><i class="fa-solid fa-mug-saucer fa-2xl"></i> <br />Canteens</p>
+                </Link>
+              </div>
 
             <div className="mt-2">
               <button

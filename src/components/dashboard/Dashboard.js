@@ -83,35 +83,44 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-          <div className="card">
-            <h1 className="large text-primary">Control Panel</h1>
-            <p className="lead">
-              <i className="fa fa-user"></i> Welcome {currentUser.displayName}
+      <div className="card">
+        <h1 className="large text-primary">Control Panel</h1>
+        <p className="lead">
+          <i className="fa fa-user"></i> Welcome {currentUser.displayName}
+        </p>
+        <div className="panels">
+          <Link to="/exhibits" className="panel">
+            <p>
+              <i className="fa-regular fa-lightbulb fa-2xl"></i> <br />
+              Exhibits
             </p>
-              <div className="panels">
-                <Link to="/exhibits" className="panel">
-                  <p><i class="fa-regular fa-lightbulb fa-2xl"></i> <br />Exhibits</p>
-                </Link>
-                <Link to="/events" className="panel">
-                  <p><i class="fa-regular fa-clock fa-2xl"></i> <br />Events</p>
-                </Link>
-                <Link to="/restrooms" className="panel">
-                  <p><i class="fa-solid fa-restroom fa-2xl"></i> <br />Washrooms</p>
-                </Link>
-                <Link to="/canteens" className="panel">
-                  <p><i class="fa-solid fa-mug-saucer fa-2xl"></i> <br />Canteens</p>
-                </Link>
-              </div>
+          </Link>
+          <Link to="/events" className="panel">
+            <p>
+              <i className="fa-regular fa-clock fa-2xl"></i> <br />
+              Events
+            </p>
+          </Link>
+          <Link to="/restrooms" className="panel">
+            <p>
+              <i className="fa-solid fa-restroom fa-2xl"></i> <br />
+              Washrooms
+            </p>
+          </Link>
+          <Link to="/canteens" className="panel">
+            <p>
+              <i className="fa-solid fa-mug-saucer fa-2xl"></i> <br />
+              Canteens
+            </p>
+          </Link>
+        </div>
 
-            <div className="mt-2">
-              <button
-                className="btn btn-primary"
-                onClick={() => onDeleteAccount()}
-              >
-                <i className="fas fa-user-minus"></i> Delete My Account
-              </button>
-            </div>
-          </div>
+        <div className="mt-2">
+          <button className="btn btn-primary" onClick={() => onDeleteAccount()}>
+            <i className="fas fa-user-minus"></i> Delete My Account
+          </button>
+        </div>
+      </div>
     </Fragment>
   );
 };

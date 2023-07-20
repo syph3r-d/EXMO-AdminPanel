@@ -22,11 +22,10 @@ export interface IEvent {
   subtitle?: string;
   thumbnail?: string;
   displayImage?: string;
-  status: EStatus;
   location: ILocation;
   faculty: string;
-  department: string;
   caption: string;
+  department: string;
   description?: string;
   hours: [
     {
@@ -46,6 +45,7 @@ export interface IEvent {
       title: string;
     }
   ];
+  status: EStatus;
 }
 
 export interface IPlace {

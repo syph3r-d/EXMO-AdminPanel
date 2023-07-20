@@ -18,29 +18,29 @@ const CreateProject = () => {
   const [formData, setFormData] = useState({
     title: "",
     subtitle: "",
-    faculty: "",
-    department: "",
+    thumbnail: "",
+    displayImage: "",
     location: {
-      lat: "",
-      lng: "",
-      title: "",
-      subtitle: "",
+      building: "",
+      floor: 0,
+      section: "",
+      latitude: 0,
+      longitude: 0,
     },
-    hours: {
-      start: "",
-      end: "",
-    },
+    faculty: "",
+    caption: "",
+    department: "",
+    description: "",
+    hours: [],
+    images: [],
     team: [],
     status: "",
-    description: "",
-    imgs: [],
     userid: currentUser.uid,
   });
   const [deleted, setDeleted] = useState([]);
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [thumbnail, setThumbnail] = useState(null);
-
 
   const uselocation = useLocation();
 
@@ -145,7 +145,7 @@ const CreateProject = () => {
     console.log(hours);
   };
   const handleThumbChange = (e) => {
-    setThumbnail(e.target.files[0])
+    setThumbnail(e.target.files[0]);
   };
 
   return (
@@ -228,9 +228,7 @@ const CreateProject = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={() =>
-                      setThumbnail(null)
-                    }
+                    onClick={() => setThumbnail(null)}
                   >
                     <i className="fa fa-times" aria-hidden="true"></i>
                   </button>

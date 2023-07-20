@@ -7,6 +7,7 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import NotificationContext from "../../contexts/alertContext";
 import { deleteProject, deleteUserProjects } from "../../models/project";
 import { getProjects } from "../../models/project";
+import MapContainer from "../utils/Map";
 
 const Exhibits = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const Exhibits = () => {
 
   const { currentUser, deleteAccount } = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
-
 
   useEffect(() => {
     console.log(currentUser);

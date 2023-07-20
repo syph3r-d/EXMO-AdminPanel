@@ -31,9 +31,9 @@ const CreateProject = () => {
     caption: "",
     department: "",
     description: "",
-    hours: [],
+    hours: [{ start: "", end: ""}],
     images: [],
-    team: [],
+    team: [""],
     status: "",
     userid: currentUser.uid,
   });
@@ -50,8 +50,12 @@ const CreateProject = () => {
     if (project !== undefined) {
       setUpdate(true);
       setFormData({
-        name: project.name,
-        category: project.category,
+        title: project.title,
+        subtitle: project.subtitle,
+        faculty: project.faculty,
+        hours: project.hours,
+        team: project.team,
+        status: project.status,
         department: project.department,
         location: project.location,
         description: project.description,
@@ -137,15 +141,48 @@ const CreateProject = () => {
     }
   };
 
-  const onTimeChange = (e) => {
-    setFormData({
-      ...formData,
-      hours: { ...hours, [e.target.name]: e.target.value },
-    });
-    console.log(hours);
+  const onTimeChange = (e,index) => {
+    const newHours = [...hours];
+    newHours[index]={...newHours[index], [e.target.name]: e.target.value}
+    setFormData({ ...formData, hours: newHours });
   };
+
   const handleThumbChange = (e) => {
     setThumbnail(e.target.files[0]);
+  };
+
+  const onTeamChange = (e, index) => {
+    const newTeam = [...team];
+    newTeam[index] = e.target.value;
+    setFormData({ ...formData, team: newTeam });
+  };
+
+  const addMember = (e) => {
+    e.preventDefault();
+    const newTeam = [...team];
+    newTeam.push("");
+    setFormData({ ...formData, team: newTeam });
+  };
+
+  const removeMember = (e,index) => {
+    e.preventDefault();
+    const newTeam = [...team];
+    newTeam.splice(index, 1);
+    setFormData({ ...formData, team: newTeam });
+  };
+
+  const addTime = (e) => {
+    e.preventDefault();
+    const newHours = [...hours];
+    newHours.push({start: "", end: ""});
+    setFormData({ ...formData, hours: newHours });
+  };
+
+  const removeTime = (e,index) => {
+    e.preventDefault();
+    const newHours = [...hours];
+    newHours.splice(index, 1);
+    setFormData({ ...formData, hours: newHours });
   };
 
   return (
@@ -189,14 +226,35 @@ const CreateProject = () => {
             />
           </div>
           <div className="form-group">
-            <input
-              type="text"
-              placeholder="Team"
-              name="team"
-              onChange={(e) => onChange(e)}
-              value={team}
-              required
-            />
+            {team.map((member, index) => (
+              <div className="twocolumns">
+                <input
+                  key={index}
+                  type="text"
+                  placeholder={`Team Member ${index + 1}`}
+                  name="team"
+                  onChange={(e) => onTeamChange(e, index)}
+                  value={team[index]}
+                  required
+                />
+                {index === 0 ? (
+                  <Fragment></Fragment>
+                ) : (
+                  <button
+                    className="btn btn-primary"
+                    onClick={(e) => removeMember(e,index)}
+                  >
+                    -
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              className="btn btn-primary mt-1"
+              onClick={(e) => addMember(e)}
+            >
+              Add a New Member
+            </button>
           </div>
           <div className="form-group">
             <input
@@ -236,28 +294,34 @@ const CreateProject = () => {
               )}
             </div>
           </div>
-          <div className="twocolumns">
-            <div className="form-group">
-              <label htmlFor="start">Start Time</label>
-              <input
-                type="datetime-local"
-                name="start"
-                onChange={(e) => onTimeChange(e)}
-                value={hours.start}
-                required
-              />
+          {hours.map((hour, index) => (
+            <div key={index} className="twocolumns">
+              <div className="form-group">
+                <label htmlFor="start">Start Time</label>
+                <input
+                  type="datetime-local"
+                  name="start"
+                  onChange={(e) => onTimeChange(e,index)}
+                  value={hours[index].start}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="end">End Time</label>
+                <input
+                  type="datetime-local"
+                  name="end"
+                  onChange={(e) => onTimeChange(e,index)}
+                  value={hours[index].end}
+                  required
+                />
+              </div>
+              {index === 0 ? (<Fragment></Fragment>):(<button className="btn btn-primary" style={{maxHeight:"50px",margin:"auto 0"}} onClick={(e)=>removeTime(e,index)}>X</button>)}
+              
             </div>
-            <div className="form-group">
-              <label htmlFor="end">End Time</label>
-              <input
-                type="datetime-local"
-                name="end"
-                onChange={(e) => onTimeChange(e)}
-                value={hours.end}
-                required
-              />
-            </div>
-          </div>
+          ))}
+          <button className="btn btn-primary" onClick={(e)=>addTime(e)}>Add New Time Slot</button>
+
           {/* <div className="form-group">
             <select
               name="category"
@@ -293,16 +357,8 @@ const CreateProject = () => {
               <option value="Civil">Civil</option>
             </select>
           </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Location"
-              name="location"
-              onChange={(e) => onChange(e)}
-              value={location}
-              required
-            />
-            {/* <Map location={{lat: 18.5204, lng: 73.8567}}  /> */}
+          <div className="location">
+            
           </div>
           <div className="form-group">
             <textarea

@@ -623,3 +623,9 @@ img {
   grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
   gap:20px;
 }
+
+.location{
+  height: 250px;
+  width: 100%;
+  background-color: #1b1a17;
+}

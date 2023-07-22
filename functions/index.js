@@ -1,5 +1,5 @@
 const { onRequest } = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+// const logger = require("firebase-functions/logger");
 const admin = require("firebase-admin");
 const express = require("express");
 const app = express();
@@ -86,24 +86,73 @@ exports.create = onRequest((request, response) => {
   }
 });
 
+// app.post("/:eventType", async (req, res) => {
+//   const eventType = req.params.eventType;
+//   const { event, collections } = req.body;
+
+//   try {
+//     const createdEvent = await admin
+//       .firestore()
+//       .collection(eventType)
+//       .add(event);
+
+//     Object.keys(collections)
+//       .slice("images")
+//       .slice("team")
+//       .forEach((collectionName) => {
+//         const documents = collections[collectionName];
+
+//         documents.forEach(async (document) => {
+//           await admin
+//             .firestore()
+//             .collection(eventType)
+//             .doc(createdEvent.id)
+//             .collection(collectionName)
+//             .add(document);
+//         });
+//       });
+//   } catch (error) {
+//     console.error(
+//       `Error writing document to collection '${eventType}':`,
+//       error
+//     );
+//   }
+
+//   res.status(200).send({ event: true });
+// });
+
 app.post("/:eventType", async (req, res) => {
   const eventType = req.params.eventType;
+  req.body.forEach(async (element) => {
+    const { event, collections } = element;
 
-  console.log("Event type:", eventType);
-  console.log("Req Body:", req.body);
+    try {
+      const createdEvent = await admin
+        .firestore()
+        .collection(eventType)
+        .add(event);
 
-  try {
-    const event = await admin.firestore().collection(eventType).add(req.body);
-    console.log("Event created:", event);
-  } catch (error) {
-    console.error(
-      `Error writing document to collection '${eventType}':`,
-      error
-    );
-  }
+      Object.keys(collections).forEach((collectionName) => {
+        const documents = collections[collectionName];
 
-  res.status(200).send({ deviceTokens: "deviceTokens" });
+        documents.forEach(async (document) => {
+          await admin
+            .firestore()
+            .collection(eventType)
+            .doc(createdEvent.id)
+            .collection(collectionName)
+            .add(document);
+        });
+      });
+    } catch (error) {
+      console.error(
+        `Error writing document to collection '${eventType}':`,
+        error
+      );
+    }
+  });
+
+  res.status(200).send({ event: true });
 });
 
-// Deploy the app to Firebase Functions
 exports.createEvent = onRequest(app);

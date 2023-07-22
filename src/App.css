@@ -210,13 +210,12 @@
 .btn.btn-primary:hover {
   background: #e7693d;
 }
-.btn.btn-delete{
+.btn.btn-delete {
   background: #df5151;
 }
-.btn.btn-delete:hover{
+.btn.btn-delete:hover {
   background: #de2b2b;
 }
-
 
 .btn:hover {
   background: #524f46;
@@ -261,7 +260,6 @@
   border-radius: 1em;
   border-collapse: collapse;
   overflow: hidden;
-
 }
 .table th,
 .table td {
@@ -273,11 +271,11 @@
   background-color: #f0f0f0b4;
 }
 
-.table tr{
+.table tr {
   transition: all 0.3s ease-in;
 }
 
-.table tr:hover{
+.table tr:hover {
   cursor: pointer;
   background-color: #dad3beb4;
 }
@@ -285,9 +283,6 @@
 .table th {
   background-color: #1b1a17ec;
   color: #fff;
-  
-  
-  
 }
 .form-group {
   margin: 1.2rem auto;
@@ -546,16 +541,16 @@ img {
   backdrop-filter: blur(14px);
 }
 
-.panels{
-  display:grid;
-  grid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );
-  gap:20px;
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
   place-items: center;
   width: 330px;
   margin: 0px auto;
 }
 
-.panel{
+.panel {
   background-color: rgba(255, 255, 255, 0.348);
   padding: 20px 30px;
   aspect-ratio: 1/1;
@@ -568,63 +563,63 @@ img {
   transition: all 0.3s ease-in-out;
 }
 
-.panel:hover{
+.panel:hover {
   background-color: rgba(0, 0, 0, 0.548);
   cursor: pointer;
   color: white;
 }
 
-.panel p{
+.panel p {
   height: fit-content;
   margin: auto 0px;
   font-size: 1.4rem;
   line-height: 50px;
 }
 
-.twocolumns{
+.twocolumns {
   display: flex;
 }
 
-.subtitle{
-  font-size:large;
+.subtitle {
+  font-size: large;
 }
 
-.thumbnail{
-  height:300px;
+.thumbnail {
+  height: 300px;
   border-radius: 20px;
   overflow: hidden;
 }
 
-.thumbnail img{
+.thumbnail img {
   height: 100%;
   object-fit: contain;
 }
 
-.heading{
+.heading {
   display: flex;
   justify-content: space-around;
 }
 
-.larger{
+.larger {
   max-width: 1300px;
 }
 
-.description{
+.description {
   margin: 20px 0px;
 }
 
-.details{
+.details {
   height: fit-content;
   margin: auto 0;
 }
 
-.displayimages{
-  display:grid;
-  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
-  gap:20px;
+.displayimages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-.location{
+.location {
   height: 250px;
   width: 100%;
   background-color: #1b1a17;

@@ -10,6 +10,8 @@ import { AuthContext } from "../auth/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import NotificationContext from "../../contexts/alertContext";
+import MapContainer from "../utils/Map";
+import FileUpload from "../utils/fileUpload";
 import { set } from "firebase/database";
 
 const CreateProject = () => {
@@ -31,7 +33,7 @@ const CreateProject = () => {
     caption: "",
     department: "",
     description: "",
-    hours: [{ start: "", end: ""}],
+    hours: [{ start: "", end: "" }],
     images: [],
     team: [""],
     status: "",
@@ -110,6 +112,9 @@ const CreateProject = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    console.log(formData);
+    return;
     setIsLoading(true);
 
     if (update) {
@@ -141,9 +146,9 @@ const CreateProject = () => {
     }
   };
 
-  const onTimeChange = (e,index) => {
+  const onTimeChange = (e, index) => {
     const newHours = [...hours];
-    newHours[index]={...newHours[index], [e.target.name]: e.target.value}
+    newHours[index] = { ...newHours[index], [e.target.name]: e.target.value };
     setFormData({ ...formData, hours: newHours });
   };
 
@@ -157,6 +162,13 @@ const CreateProject = () => {
     setFormData({ ...formData, team: newTeam });
   };
 
+  const handleMapLocationChange = (latitude, longitude) => {
+    setFormData({
+      ...formData,
+      location: { ...location, latitude, longitude },
+    });
+  };
+
   const addMember = (e) => {
     e.preventDefault();
     const newTeam = [...team];
@@ -164,7 +176,7 @@ const CreateProject = () => {
     setFormData({ ...formData, team: newTeam });
   };
 
-  const removeMember = (e,index) => {
+  const removeMember = (e, index) => {
     e.preventDefault();
     const newTeam = [...team];
     newTeam.splice(index, 1);
@@ -174,11 +186,11 @@ const CreateProject = () => {
   const addTime = (e) => {
     e.preventDefault();
     const newHours = [...hours];
-    newHours.push({start: "", end: ""});
+    newHours.push({ start: "", end: "" });
     setFormData({ ...formData, hours: newHours });
   };
 
-  const removeTime = (e,index) => {
+  const removeTime = (e, index) => {
     e.preventDefault();
     const newHours = [...hours];
     newHours.splice(index, 1);
@@ -242,7 +254,7 @@ const CreateProject = () => {
                 ) : (
                   <button
                     className="btn btn-primary"
-                    onClick={(e) => removeMember(e,index)}
+                    onClick={(e) => removeMember(e, index)}
                   >
                     -
                   </button>
@@ -277,7 +289,7 @@ const CreateProject = () => {
                 onChange={handleThumbChange}
               />
             </label>
-            <div className="upload__img-wrap">
+            {/* <div className="upload__img-wrap">
               {thumbnail === null ? (
                 <Fragment></Fragment>
               ) : (
@@ -292,7 +304,7 @@ const CreateProject = () => {
                   </button>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
           {hours.map((hour, index) => (
             <div key={index} className="twocolumns">
@@ -301,7 +313,7 @@ const CreateProject = () => {
                 <input
                   type="datetime-local"
                   name="start"
-                  onChange={(e) => onTimeChange(e,index)}
+                  onChange={(e) => onTimeChange(e, index)}
                   value={hours[index].start}
                   required
                 />
@@ -311,16 +323,27 @@ const CreateProject = () => {
                 <input
                   type="datetime-local"
                   name="end"
-                  onChange={(e) => onTimeChange(e,index)}
+                  onChange={(e) => onTimeChange(e, index)}
                   value={hours[index].end}
                   required
                 />
               </div>
-              {index === 0 ? (<Fragment></Fragment>):(<button className="btn btn-primary" style={{maxHeight:"50px",margin:"auto 0"}} onClick={(e)=>removeTime(e,index)}>X</button>)}
-              
+              {index === 0 ? (
+                <Fragment></Fragment>
+              ) : (
+                <button
+                  className="btn btn-primary"
+                  style={{ maxHeight: "50px", margin: "auto 0" }}
+                  onClick={(e) => removeTime(e, index)}
+                >
+                  X
+                </button>
+              )}
             </div>
           ))}
-          <button className="btn btn-primary" onClick={(e)=>addTime(e)}>Add New Time Slot</button>
+          <button className="btn btn-primary" onClick={(e) => addTime(e)}>
+            Add New Time Slot
+          </button>
 
           {/* <div className="form-group">
             <select
@@ -358,7 +381,7 @@ const CreateProject = () => {
             </select>
           </div>
           <div className="location">
-            
+            <MapContainer onMapLocationChange={handleMapLocationChange} />
           </div>
           <div className="form-group">
             <textarea
@@ -452,6 +475,7 @@ const CreateProject = () => {
           </Link>
         </form>
       </div>
+      <FileUpload />
     </Fragment>
   );
 };

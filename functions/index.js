@@ -155,4 +155,21 @@ app.post("/:eventType", async (req, res) => {
   res.status(200).send({ event: true });
 });
 
+app.get("/:eventType", async (req, res) => {
+  const eventType = req.params.eventType;
+
+  try {
+    const eventsSnapshot = await admin.firestore().collection(eventType).get();
+
+    const events = eventsSnapshot.docs.map((doc) => doc.data());
+
+    res.status(200).send({ events });
+  } catch (error) {
+    console.error(
+      `Error writing document to collection '${eventType}':`,
+      error
+    );
+  }
+});
+
 exports.createEvent = onRequest(app);

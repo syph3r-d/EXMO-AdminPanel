@@ -24,7 +24,7 @@ const Exhibits = () => {
       setIsLoading(true);
       const data = await getDocs(
         query(
-          collection(Firestore, "exhibits")
+          collection(Firestore, "exhibits_xx")
           // where("userid", "==", currentUser.uid)
         )
       );
@@ -52,7 +52,7 @@ const Exhibits = () => {
     navigate("/create-project", {
       state: {
         project,
-        type:"exhibits"
+        type: "exhibits",
       },
     });
   };
@@ -97,10 +97,27 @@ const Exhibits = () => {
                 <tbody>
                   {projects.map((project) => (
                     <tr key={project.id}>
-                      <td onClick={() => onView(project.id)}>{project.title}</td>
-                      <td onClick={() => onView(project.id)} className="hide-sm">{project.faculty}</td>
-                      <td onClick={() => onView(project.id)} className="hide-sm">{project.department}</td>
-                      <td onClick={() => onView(project.id)} className="hide-sm">{project.status}</td>
+                      <td onClick={() => onView(project.id)}>
+                        {project.title}
+                      </td>
+                      <td
+                        onClick={() => onView(project.id)}
+                        className="hide-sm"
+                      >
+                        {project.faculty}
+                      </td>
+                      <td
+                        onClick={() => onView(project.id)}
+                        className="hide-sm"
+                      >
+                        {project.department}
+                      </td>
+                      <td
+                        onClick={() => onView(project.id)}
+                        className="hide-sm"
+                      >
+                        {project.status}
+                      </td>
                       <td>
                         <div style={{ display: "flex" }}>
                           <button

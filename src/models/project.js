@@ -21,28 +21,35 @@ import {
 } from "firebase/storage";
 
 export const projectGet = async (id) => {
-  const docRef = doc(Firestore, "exhibits", id);
+  const docRef = doc(Firestore, "exhibits_xx", id);
   const docSnap = await getDoc(docRef);
   return docSnap.data();
 };
 
-export const projectSave = async (form, images,thumbnail,type, notification) => {
+export const projectSave = async (
+  form,
+  images,
+  thumbnail,
+  type,
+  notification
+) => {
   try {
-    // const docRef = await addDoc(collection(Firestore, type), form);
-    const Ref = await Firestore.collection(type).add(form);
+    const docRef = await addDoc(collection(Firestore, type), form);
+    // firestore.collection(collectionName).doc(docId);
+    // const Ref = await Firestore.collection(type).add(form);
 
-    images.forEach(image => {
-      const imageLink=uploadFile(image);
+    images.forEach((image) => {
+      const imageLink = uploadFile(image);
       form.images.push(imageLink);
     });
 
-    form.thumbnail=uploadFile(thumbnail);
+    form.thumbnail = await uploadFile(thumbnail);
 
-    const res=await Ref.set(form)
-    
+    const res = await docRef.set(form);
+
     // await setDoc(doc(Firestore, {type}, docRef.id), form);
 
-    return Ref.id;
+    return docRef.id;
   } catch (error) {
     console.error("Error saving project:", error);
     throw error;
@@ -51,7 +58,7 @@ export const projectSave = async (form, images,thumbnail,type, notification) => 
 
 export const projectUpdate = async (form, id) => {
   try {
-    await updateDoc(doc(Firestore, "exhibits", id), form);
+    await updateDoc(doc(Firestore, "exhibits_xx", id), form);
   } catch (error) {
     console.error(error);
   }
@@ -70,17 +77,21 @@ export const deleteImages = async (urls, id) => {
 
 export const updateImages = async (projectId, images, notification) => {
   try {
-    const projectRef = doc(Firestore, "exhibits", projectId);
+    const projectRef = doc(Firestore, "exhibits_xx", projectId);
     const projectDoc = await getDoc(projectRef);
 
     if (!projectDoc.exists()) {
       throw new Error("Project does not exist");
     }
 
-    images.forEach(image => {
-      const imageLink=uploadFile(image);
-      form.images.push(imageLink);
-    });
+    const newImages = [];
+
+    for (let i = 0; i < images.length; i++) {
+      newImages.push(await uploadFile(images[i]));
+    }
+
+    console.log(newImages);
+    // projectRef.images.push(imageLink);
 
     await updateDoc(projectRef, { images });
     console.log("Project updated successfully");
@@ -92,7 +103,7 @@ export const updateImages = async (projectId, images, notification) => {
 export const deleteUserProjects = async (id) => {
   try {
     const q = query(
-      collection(Firestore, "exhibits"),
+      collection(Firestore, "exhibits_xx"),
       where("userid", "==", id)
     );
     const querySnapshot = await getDocs(q);
@@ -105,7 +116,7 @@ export const deleteUserProjects = async (id) => {
 };
 
 export const deleteProject = async (id) => {
-  await deleteDoc(doc(Firestore, "exhibits", id));
+  await deleteDoc(doc(Firestore, "exhibits_xx", id));
   const storageRef = ref(Storage, `images/${id}/`);
   const fileList = await listAll(storageRef);
 
@@ -117,20 +128,23 @@ export const deleteProject = async (id) => {
 };
 
 export const uploadFile = async (file) => {
-  fetch("https://admin.exmo.uom.lk/fileUpload.php", {
-    method: "POST",
-    headers: {
-      "X-Api-Key": "xMsbQTsBl4PAv4I9r^17^!ghGGioOt1R",
-    },
-    body: file,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      return "https://admin.exmo.uom.lk/" + data.path;
-      // Handle the response from the server here
+  return new Promise((resolve, reject) => {
+    fetch("https://admin.exmo.uom.lk/fileUpload.php", {
+      method: "POST",
+      headers: {
+        "X-Api-Key": "xMsbQTsBl4PAv4I9r^17^!ghGGioOt1R",
+      },
+      body: file,
     })
-    .catch((error) => {
-      console.error("Error uploading file:", error);
-      // Handle errors here
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        resolve("https://admin.exmo.uom.lk/" + data.path);
+        // Handle the response from the server here
+      })
+      .catch((error) => {
+        console.error("Error uploading file:", error);
+        reject("Error uploading file");
+        // Handle errors here
+      });
+  });
 };

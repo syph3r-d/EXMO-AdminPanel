@@ -1,0 +1,360 @@
+[debug] [2023-07-25T20:57:31.028Z] ----------------------------------------------------------------------
+[debug] [2023-07-25T20:57:31.033Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2023-07-25T20:57:31.034Z] CLI Version:   12.4.4
+[debug] [2023-07-25T20:57:31.035Z] Platform:      win32
+[debug] [2023-07-25T20:57:31.035Z] Node Version:  v18.16.1
+[debug] [2023-07-25T20:57:31.037Z] Time:          Wed Jul 26 2023 02:27:31 GMT+0530 (India Standard Time)
+[debug] [2023-07-25T20:57:31.037Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-25T20:57:31.055Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-07-25T20:57:31.335Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-25T20:57:31.335Z] > authorizing via signed-in user (pwshehan@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2023-07-25T20:57:31.363Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-25T20:57:31.363Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-07-25T20:57:31.412Z] [hub] writing locator at C:\Users\pwshe\AppData\Local\Temp\hub-exmo2023.json
+[debug] [2023-07-25T20:57:31.444Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-25T20:57:31.444Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-07-25T20:57:31.444Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2023-07-25T20:57:31.452Z] defaultcredentials: writing to file C:\Users\pwshe\AppData\Roaming\firebase\pwshehan_gmail_com_application_default_credentials.json
+[debug] [2023-07-25T20:57:31.455Z] Setting GAC to C:\Users\pwshe\AppData\Roaming\firebase\pwshehan_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\pwshe\\AppData\\Roaming\\firebase\\pwshehan_gmail_com_application_default_credentials.json"}}
+[debug] [2023-07-25T20:57:31.457Z] > refreshing access token with scopes: []
+[debug] [2023-07-25T20:57:31.458Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-07-25T20:57:31.458Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-25T20:57:31.973Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-07-25T20:57:31.974Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-07-25T20:57:32.002Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/exmo2023/adminSdkConfig [none]
+[debug] [2023-07-25T20:57:32.220Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-07-25T20:57:32.221Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-07-25T20:57:32.995Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/exmo2023/adminSdkConfig 200
+[debug] [2023-07-25T20:57:32.996Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/exmo2023/adminSdkConfig {"projectId":"exmo2023","storageBucket":"exmo2023.appspot.com"}
+[debug] [2023-07-25T20:57:33.046Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-07-25T20:57:33.046Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-07-25T20:57:33.047Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\pwshe\\.cache\\firebase\\emulators\\ui-v1.11.7\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\pwshe\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.7\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-07-25T20:57:33.480Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-07-25T20:57:33.481Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\" for Cloud Functions..."}}
+[debug] [2023-07-25T20:57:33.618Z] Validating nodejs source
+[debug] [2023-07-25T20:57:35.708Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-07-25T20:57:35.708Z] Building nodejs source
+[debug] [2023-07-25T20:57:35.709Z] Failed to find version of module node: reached end of search path C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules
+[info] +  functions: Using node@18 from host. 
+[debug] [2023-07-25T20:57:35.712Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-07-25T20:57:35.727Z] Found firebase-functions binary at 'C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8988
+
+[debug] [2023-07-25T20:57:41.139Z] Got response from /__/functions.yaml {"endpoints":{"sendNotificationToAll":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendNotificationToAll"},"create":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"create"},"createEvent":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"createEvent"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: sendNotificationToAll, create, createEvent. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendNotificationToAll, create, createEvent."}}
+[info] +  functions[us-central1-sendNotificationToAll]: http function initialized (http://127.0.0.1:5001/exmo2023/us-central1/sendNotificationToAll). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/exmo2023/us-central1/sendNotificationToAll)."}}
+[info] +  functions[us-central1-create]: http function initialized (http://127.0.0.1:5001/exmo2023/us-central1/create). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/exmo2023/us-central1/create)."}}
+[info] +  functions[us-central1-createEvent]: http function initialized (http://127.0.0.1:5001/exmo2023/us-central1/createEvent). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/exmo2023/us-central1/createEvent)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-07-25T21:00:10.061Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-25T21:00:10.061Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-25T21:00:10.062Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-25T21:00:10.061Z"],"workRunningCount":1}
+[debug] [2023-07-25T21:00:10.063Z] Accepted request POST /exmo2023/us-central1/createEvent/utils2 --> us-central1-createEvent
+[debug] [2023-07-25T21:00:10.068Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-25T21:00:10.068Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2"}}
+[debug] [2023-07-25T21:00:10.085Z] [worker-pool] addWorker(us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createEvent)"}}
+[debug] [2023-07-25T21:00:10.086Z] [worker-pool] Adding worker with key us-central1-createEvent, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createEvent, total=1"}}
+[debug] [2023-07-25T21:00:11.589Z] [runtime-status] [35380] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:11.589Z] [runtime-status] [35380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:11.590Z] [runtime-status] [35380] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-07-25T21:00:11.590Z] [runtime-status] [35380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:13.158Z] [runtime-status] [35380] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-07-25T21:00:13.158Z] [runtime-status] [35380] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2023-07-25T21:00:13.159Z] [runtime-status] [35380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:13.160Z] [runtime-status] [35380] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:13.162Z] [runtime-status] [35380] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-25T21:00:13.163Z] [runtime-status] [35380] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-07-25T21:00:13.273Z] [runtime-status] [35380] initializeApp(DEFAULT) {"storageBucket":"exmo2023.appspot.com","projectId":"exmo2023"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] initializeApp(DEFAULT) {\"storageBucket\":\"exmo2023.appspot.com\",\"projectId\":\"exmo2023\"}"}}
+[debug] [2023-07-25T21:00:13.307Z] [runtime-status] [35380] Functions runtime initialized. {"cwd":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions","node_version":"18.16.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\",\"node_version\":\"18.16.1\"}"}}
+[debug] [2023-07-25T21:00:13.308Z] [runtime-status] [35380] Listening to port: \\?\pipe\fire_emu_f96816a02f490001 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [35380] Listening to port: \\\\?\\pipe\\fire_emu_f96816a02f490001"}}
+[debug] [2023-07-25T21:00:13.363Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE"}}
+[debug] [2023-07-25T21:00:13.363Z] [worker-pool] submitRequest(triggerId=us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createEvent)"}}
+[info] i  functions: Beginning execution of "us-central1-createEvent" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Beginning execution of \"us-central1-createEvent\""}}
+[debug] [2023-07-25T21:00:13.366Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: BUSY"}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2023-07-25T21:00:15.991Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-createEvent" in 2625.3633ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finished \"us-central1-createEvent\" in 2625.3633ms"}}
+[debug] [2023-07-25T21:00:15.992Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE"}}
+[debug] [2023-07-25T21:00:15.993Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-07-25T21:00:15.993Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-07-25T21:00:15.993Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2023-07-25T21:00:36.606Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-25T21:00:36.606Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-25T21:00:36.606Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-25T21:00:36.606Z"],"workRunningCount":1}
+[debug] [2023-07-25T21:00:36.606Z] Accepted request POST /exmo2023/us-central1/createEvent/utils2 --> us-central1-createEvent
+[debug] [2023-07-25T21:00:36.609Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-25T21:00:36.609Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2"}}
+[debug] [2023-07-25T21:00:36.609Z] [worker-pool] submitRequest(triggerId=us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createEvent)"}}
+[info] i  functions: Beginning execution of "us-central1-createEvent" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Beginning execution of \"us-central1-createEvent\""}}
+[debug] [2023-07-25T21:00:36.611Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: BUSY"}}
+[debug] [2023-07-25T21:00:36.622Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-createEvent" in 11.4904ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finished \"us-central1-createEvent\" in 11.4904ms"}}
+[debug] [2023-07-25T21:00:36.623Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: IDLE"}}
+[debug] [2023-07-25T21:00:36.623Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-07-25T21:00:36.623Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-07-25T21:00:36.623Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T05:24:52.434Z] File C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-07-26T05:24:53.468Z] Validating nodejs source
+[debug] [2023-07-26T05:25:03.657Z] checkFunctionsSDKVersion was unable to fetch information from NPM Error: spawnSync C:\WINDOWS\system32\cmd.exe ETIMEDOUT
+    at Object.spawnSync (node:internal/child_process:1110:20)
+    at Object.spawnSync (node:child_process:871:24)
+    at Function.spawnSync [as sync] (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\node_modules\cross-spawn\index.js:26:23)
+    at Object.getLatestSDKVersion (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\versioning.js:54:25)
+    at Object.checkFunctionsSDKVersion (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\versioning.js:74:32)
+    at Delegate.validate (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\index.js:84:20)
+    at FunctionsEmulator.discoverTriggers (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:296:35)
+    at async FunctionsEmulator.loadTriggers (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:325:34)
+[debug] [2023-07-26T05:25:03.664Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-07-26T05:25:03.665Z] Building nodejs source
+[debug] [2023-07-26T05:25:03.666Z] Failed to find version of module node: reached end of search path C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules
+[info] +  functions: Using node@18 from host. 
+[debug] [2023-07-26T05:25:03.674Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-07-26T05:25:03.715Z] Found firebase-functions binary at 'C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-07-26T05:25:03.803Z] File C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-07-26T05:25:04.805Z] Validating nodejs source
+[debug] [2023-07-26T05:25:14.875Z] checkFunctionsSDKVersion was unable to fetch information from NPM Error: spawnSync C:\WINDOWS\system32\cmd.exe ETIMEDOUT
+    at Object.spawnSync (node:internal/child_process:1110:20)
+    at Object.spawnSync (node:child_process:871:24)
+    at Function.spawnSync [as sync] (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\node_modules\cross-spawn\index.js:26:23)
+    at Object.getLatestSDKVersion (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\versioning.js:54:25)
+    at Object.checkFunctionsSDKVersion (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\versioning.js:74:32)
+    at Delegate.validate (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\deploy\functions\runtimes\node\index.js:84:20)
+    at FunctionsEmulator.discoverTriggers (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:296:35)
+    at async FunctionsEmulator.loadTriggers (C:\Users\pwshe\AppData\Roaming\nvm\v18.16.1\node_modules\firebase-tools\lib\emulator\functionsEmulator.js:325:34)
+[debug] [2023-07-26T05:25:14.877Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-07-26T05:25:14.878Z] Building nodejs source
+[debug] [2023-07-26T05:25:14.879Z] Failed to find version of module node: reached end of search path C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules
+[info] +  functions: Using node@18 from host. 
+[debug] [2023-07-26T05:25:14.892Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-07-26T05:25:14.912Z] Found firebase-functions binary at 'C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8636
+
+[info] Serving at port 8105
+
+[debug] [2023-07-26T05:25:22.776Z] Got response from /__/functions.yaml {"endpoints":{"sendNotificationToAll":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendNotificationToAll"},"create":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"create"},"createEvent":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"createEvent"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: sendNotificationToAll, create, createEvent. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendNotificationToAll, create, createEvent."}}
+[debug] [2023-07-26T05:25:22.836Z] [worker-pool] Shutting down IDLE worker (us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-createEvent)"}}
+[debug] [2023-07-26T05:25:22.836Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: FINISHING"}}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[debug] [2023-07-26T05:25:22.852Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: exited"}}
+[debug] [2023-07-26T05:25:22.853Z] [worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-137f0a64-584d-46ce-b91d-34a8c392f13f]: FINISHED"}}
+[debug] [2023-07-26T05:26:05.002Z] File C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-07-26T05:26:06.011Z] Validating nodejs source
+[debug] [2023-07-26T05:26:11.572Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2023-07-26T05:26:11.573Z] Building nodejs source
+[debug] [2023-07-26T05:26:11.573Z] Failed to find version of module node: reached end of search path C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules
+[info] +  functions: Using node@18 from host. 
+[debug] [2023-07-26T05:26:11.577Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-07-26T05:26:11.589Z] Found firebase-functions binary at 'C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8323
+
+[debug] [2023-07-26T05:26:12.896Z] Got response from /__/functions.yaml {"endpoints":{"sendNotificationToAll":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"sendNotificationToAll"},"create":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"create"},"createEvent":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"createEvent"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: sendNotificationToAll, create, createEvent. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: sendNotificationToAll, create, createEvent."}}
+[debug] [2023-07-26T05:26:58.454Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-26T05:26:58.454Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T05:26:58.454Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/utils2-2023-07-26T05:26:58.454Z"],"workRunningCount":1}
+[debug] [2023-07-26T05:26:58.454Z] Accepted request GET /exmo2023/us-central1/createEvent/utils2 --> us-central1-createEvent
+[debug] [2023-07-26T05:26:58.487Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-26T05:26:58.488Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/utils2, mapping to path=/utils2"}}
+[debug] [2023-07-26T05:26:58.488Z] [worker-pool] Cleaned up workers for us-central1-createEvent: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-createEvent: 1 --> 0"}}
+[debug] [2023-07-26T05:26:58.519Z] [worker-pool] addWorker(us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createEvent)"}}
+[debug] [2023-07-26T05:26:58.521Z] [worker-pool] Adding worker with key us-central1-createEvent, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createEvent, total=1"}}
+[error] !!  functions: Failed to handle request for function us-central1-createEvent {"metadata":{"emulator":{"name":"functions"},"message":"Failed to handle request for function us-central1-createEvent"}}
+[error] !!  functions: Failed to start functions in C:\Users\pwshe\Documents\exmo\EXMO-AdminPanel\functions: FirebaseError: Failed to load function. {"metadata":{"emulator":{"name":"functions"},"message":"Failed to start functions in C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions: FirebaseError: Failed to load function."}}
+[debug] [2023-07-26T05:27:28.657Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T05:29:24.679Z] [runtime-status] [51088] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:24.700Z] [runtime-status] [51088] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:24.708Z] [runtime-status] [51088] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-07-26T05:29:24.713Z] [runtime-status] [51088] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:37.799Z] [runtime-status] [51088] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-07-26T05:29:37.800Z] [runtime-status] [51088] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2023-07-26T05:29:37.801Z] [runtime-status] [51088] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:37.805Z] [runtime-status] [51088] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:37.811Z] [runtime-status] [51088] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:29:37.811Z] [runtime-status] [51088] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-07-26T05:29:38.107Z] [runtime-status] [51088] initializeApp(DEFAULT) {"storageBucket":"exmo2023.appspot.com","projectId":"exmo2023"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] initializeApp(DEFAULT) {\"storageBucket\":\"exmo2023.appspot.com\",\"projectId\":\"exmo2023\"}"}}
+[debug] [2023-07-26T05:29:38.213Z] [runtime-status] [51088] Functions runtime initialized. {"cwd":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions","node_version":"18.16.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\",\"node_version\":\"18.16.1\"}"}}
+[debug] [2023-07-26T05:29:38.214Z] [runtime-status] [51088] Listening to port: \\?\pipe\fire_emu_b2ecd920ea91d9e3 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [51088] Listening to port: \\\\?\\pipe\\fire_emu_b2ecd920ea91d9e3"}}
+[debug] [2023-07-26T05:30:14.095Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T05:30:14.095Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T05:30:14.095Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T05:30:14.095Z"],"workRunningCount":1}
+[debug] [2023-07-26T05:30:14.096Z] Accepted request GET /exmo2023/us-central1/createEvent/exhibits --> us-central1-createEvent
+[debug] [2023-07-26T05:30:14.102Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-26T05:30:14.103Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits"}}
+[debug] [2023-07-26T05:30:14.120Z] [worker-pool] addWorker(us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createEvent)"}}
+[debug] [2023-07-26T05:30:14.122Z] [worker-pool] Adding worker with key us-central1-createEvent, total=2 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createEvent, total=2"}}
+[debug] [2023-07-26T05:30:17.104Z] [runtime-status] [58448] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.110Z] [runtime-status] [58448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.112Z] [runtime-status] [58448] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-07-26T05:30:17.114Z] [runtime-status] [58448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.601Z] [runtime-status] [58448] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-07-26T05:30:17.601Z] [runtime-status] [58448] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}}"}}
+[debug] [2023-07-26T05:30:17.603Z] [runtime-status] [58448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.607Z] [runtime-status] [58448] Resolved module firebase-admin {"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.617Z] [runtime-status] [58448] Resolved module firebase-functions {"declared":true,"installed":true,"version":"4.4.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-functions\\lib\\v1\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"4.4.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v1\\\\index.js\"}"}}
+[debug] [2023-07-26T05:30:17.618Z] [runtime-status] [58448] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"11.10.1","resolution":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"11.10.1\",\"resolution\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-07-26T05:30:17.824Z] [runtime-status] [58448] initializeApp(DEFAULT) {"storageBucket":"exmo2023.appspot.com","projectId":"exmo2023"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] initializeApp(DEFAULT) {\"storageBucket\":\"exmo2023.appspot.com\",\"projectId\":\"exmo2023\"}"}}
+[debug] [2023-07-26T05:30:17.847Z] [runtime-status] [58448] Functions runtime initialized. {"cwd":"C:\\Users\\pwshe\\Documents\\exmo\\EXMO-AdminPanel\\functions","node_version":"18.16.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\pwshe\\\\Documents\\\\exmo\\\\EXMO-AdminPanel\\\\functions\",\"node_version\":\"18.16.1\"}"}}
+[debug] [2023-07-26T05:30:17.847Z] [runtime-status] [58448] Listening to port: \\?\pipe\fire_emu_3e12debae2f2d2db {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[runtime-status] [58448] Listening to port: \\\\?\\pipe\\fire_emu_3e12debae2f2d2db"}}
+[debug] [2023-07-26T05:30:17.968Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE"}}
+[debug] [2023-07-26T05:30:17.970Z] [worker-pool] submitRequest(triggerId=us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createEvent)"}}
+[info] i  functions: Beginning execution of "us-central1-createEvent" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Beginning execution of \"us-central1-createEvent\""}}
+[debug] [2023-07-26T05:30:17.973Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY"}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2023-07-26T05:30:26.757Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-createEvent" in 8784.3599ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finished \"us-central1-createEvent\" in 8784.3599ms"}}
+[debug] [2023-07-26T05:30:26.761Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE"}}
+[debug] [2023-07-26T05:30:26.762Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-07-26T05:30:26.762Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-07-26T05:30:26.763Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T08:13:18.976Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T08:13:18.972Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T08:13:18.992Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T08:13:18.972Z"],"workRunningCount":1}
+[debug] [2023-07-26T08:13:18.993Z] Accepted request GET /exmo2023/us-central1/createEvent/exhibits --> us-central1-createEvent
+[debug] [2023-07-26T08:13:19.063Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-26T08:13:19.064Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits"}}
+[debug] [2023-07-26T08:13:19.065Z] [worker-pool] submitRequest(triggerId=us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createEvent)"}}
+[info] i  functions: Beginning execution of "us-central1-createEvent" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Beginning execution of \"us-central1-createEvent\""}}
+[debug] [2023-07-26T08:13:19.144Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY"}}
+[debug] [2023-07-26T08:13:21.142Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-createEvent" in 1998.3784ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finished \"us-central1-createEvent\" in 1998.3784ms"}}
+[debug] [2023-07-26T08:13:21.143Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE"}}
+[debug] [2023-07-26T08:13:21.143Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-07-26T08:13:21.143Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-07-26T08:13:21.144Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T08:21:48.235Z] [work-queue] {"queuedWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T08:21:48.234Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-07-26T08:21:48.235Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/exmo2023/us-central1/createEvent/exhibits-2023-07-26T08:21:48.234Z"],"workRunningCount":1}
+[debug] [2023-07-26T08:21:48.236Z] Accepted request GET /exmo2023/us-central1/createEvent/exhibits --> us-central1-createEvent
+[debug] [2023-07-26T08:21:48.248Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-07-26T08:21:48.249Z] [functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/exmo2023/us-central1/createEvent/exhibits, mapping to path=/exhibits"}}
+[debug] [2023-07-26T08:21:48.249Z] [worker-pool] submitRequest(triggerId=us-central1-createEvent) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createEvent)"}}
+[info] i  functions: Beginning execution of "us-central1-createEvent" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Beginning execution of \"us-central1-createEvent\""}}
+[debug] [2023-07-26T08:21:48.251Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: BUSY"}}
+[debug] [2023-07-26T08:21:49.761Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-createEvent" in 1509.9398ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finished \"us-central1-createEvent\" in 1509.9398ms"}}
+[debug] [2023-07-26T08:21:49.762Z] [worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"[worker-us-central1-createEvent-96e00582-fde4-4435-9fb8-9ba2d4ebc188]: IDLE"}}
+[debug] [2023-07-26T08:21:49.776Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-07-26T08:21:49.776Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createEvent"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-07-26T08:21:49.777Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

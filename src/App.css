@@ -621,6 +621,6 @@ img {
 
 .location {
   height: 250px;
-  width: 100%;
-  background-color: #1b1a17;
+  width: 650px;
+  margin: auto;
 }

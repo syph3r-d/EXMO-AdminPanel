@@ -211,7 +211,7 @@ const CreateProject = () => {
             >
               <option value="0">* Select Type</option>
               <option value="lecture">Lecture</option>
-              <option value="exhibits">Exhibit</option>
+              <option value="exhibits2">Exhibit</option>
               <option value="event">Event</option>
             </select>
           </div>

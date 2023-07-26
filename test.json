@@ -1,0 +1,223 @@
+{
+    "events": [
+        {
+            "images": [
+                "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?ixlib=rb-\t4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cmVuZXdhYmxlJTIwZW5lcmd5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlbmV3YWJsZSUyMGVuZXJneXxlbnwwfHwwfHx8MA%3D\t%3D&auto=format&fit=crop&w=500&q=60",
+                "https://images.unsplash.com/photo-1619697101606-7c092a8e6281?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJlbmV3YWJsZSUyMGVuZXJneXxlbnwwfHwwfHx8MA%3D\t%3D&auto=format&fit=crop&w=500&q=60",
+                "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHJlbmV3YWJsZSUyMGVuZXJneXxlbnwwfHwwfHx8MA%3D\t%3D&auto=format&fit=crop&w=500&q=60"
+            ],
+            "displayImage": "https://thumbs.dreamstime.com/b/electrical-pneumatic-valve-pressure-gauge-automation-engineering-mechanical-69956183.jpg?w=1200",
+            "caption": "Exploring sustainable energy sources",
+            "description": "This exhibit focuses on renewable energy solutions, such as solar panels, wind turbines, and hydroelectric power. Visitors can learn about the environmental benefits and \ttechnological advancements in the field of clean energy.",
+            "location": {
+                "latitude": 6.7959458,
+                "destination_lat": 79.8985603,
+                "destination_lang": 6.7959458,
+                "floor": 2,
+                "building": "Goda Uda",
+                "longitude": 79.8985603
+            },
+            "team": [
+                "Sarah Thompson",
+                "Michael Anderson",
+                "Rachel Lee"
+            ],
+            "type": "lecture",
+            "title": "Existing Solutions",
+            "department": "Electrical Engineering",
+            "status": "Active"
+        },
+        {
+            "images": [
+                "https://media.istockphoto.com/id/1394420148/photo/skilled-workers-connect-and-install-solar-panels.webp?b=1&s=170667a&w=0&k=20&c=mNgtKLBzfXukSpwTwF-utcT8100H0TyZrOxjR54xhBw=",
+                "https://media.istockphoto.com/id/1487351817/photo/sustainable-energy-wind-turbine-farm.webp?b=1&s=170667a&w=0&k=20&c=SCrafW3_D5gh2XxQkCOAUD_fsXXY6Kaz8zmF0f52mmA=",
+                "https://media.istockphoto.com/id/1423825245/photo/wind-farm-at-sunset.webp?b=1&s=170667a&w=0&k=20&c=HZeYyWlJqQdOApkqft_URUk7ImqitGRVLU2Oxycrops=",
+                "https://media.istockphoto.com/id/1463617670/photo/laptop-farm-and-engineer-team-together-at-night-for-renewable-energy-power-and-wind-turbine.jpg?\ts=612x612&w=0&k=20&c=9RqksmEWMlPRZAtjXsQSjTAWKzymkPTzLOxP1SuP5Vg="
+            ],
+            "displayImage": "https://media.istockphoto.com/id/1400218353/photo/green-technology-environmental-technology-concept-sustainable-development-goals-sdgs.webp?\tb=1&s=170667a&w=0&k=20&c=dNuySsrgH7fQgk3MRv1b2E6RX2YuCp4zfv5FRrKL3SQ=",
+            "caption": "Storing renewable energy for future use and development",
+            "description": "This exhibit focuses on renewable energy storage solutions to overcome intermittency. As the world transitions to clean and sustainable energy sources, efficient energy storage \tsystems play a crucial role in ensuring reliable power supply. In this exhibit, visitors can learn about the latest advancements in energy storage technologies, including lithium-\tion batteries, flow batteries, and hydrogen storage. They can explore how these systems capture excess renewable energy during periods of high generation and release it during times \tof high demand. Through interactive displays and real-life case studies, visitors will gain insights into the benefits of energy storage, such as load balancing, grid stabilization, \tand emergency backup power. Discover how renewable energy storage is revolutionizing the energy landscape and paving the way for a greener future.",
+            "team": [
+                "Logan Wilson",
+                "Emma Johnson",
+                "Henry Brown"
+            ],
+            "type": "exhibit",
+            "title": "Renewable Energy Storage",
+            "department": "Electrical Engineering",
+            "status": "Active",
+            "location": {
+                "latitude": 6.796506427963083,
+                "floor": 0,
+                "building": "Lagaan",
+                "longitude": 79.90115417710636,
+                "destination_lat": 6.7959458,
+                "destination_lang": 79.8985603
+            }
+        },
+        {
+            "images": [
+                "https://images.unsplash.com/photo-1580983230786-ce385a434707?ixlib=rb-\t4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmlvbWVkaWNhbCUyMGVuZ2luZWVyaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+                "https://images.unsplash.com/photo-1581091013158-5c7184f43b62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJpb21lZGljYWwlMjBlbmdpbmVlcmluZ3xlbnwwfHwwfHx8MA%3D\t%3D&auto=format&fit=crop&w=500&q=60"
+            ],
+            "displayImage": "https://images.unsplash.com/photo-1581090122087-bdc8968e525f?ixlib=rb-\t4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmlvbWVkaWNhbCUyMGVuZ2luZWVyaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+            "caption": "Revolutionizing healthcare through advanced implants",
+            "description": "This exhibit showcases cutting-edge biomedical implants used for various medical conditions. It demonstrates the integration of electronics, nanotechnology, and bioengineering \tprinciples to improve patient care and quality of life.",
+            "team": [
+                "Alex Rodriguez",
+                "Olivia Walker",
+                "Daniel Kim"
+            ],
+            "type": "exhibit",
+            "title": "Biomedical Implants",
+            "department": "Biomedical Engineering",
+            "status": "Active",
+            "location": {
+                "latitude": 6.797387743599431,
+                "floor": 1,
+                "building": "Library",
+                "longitude": 79.90048743889201,
+                "destination_lang": 79.8985603,
+                "destination_lat": 6.7959458
+            }
+        },
+        {
+            "images": [
+                "https://media.istockphoto.com/id/836073798/photo/high-voltage-circuit-breaker-in-a-power-substation.jpg?s=612x612&w=0&k=20&c=OI3mo5E2CQg9AkkucePfO2sE-Ji_h_QH0fM4FjUk5Dc=",
+                "https://media.istockphoto.com/id/1332517053/photo/high-voltage-substation-under-sunset.jpg?s=612x612&w=0&k=20&c=Du6ioKbTceAfb9vWo9HDSQyDYY45TFzFTpOFFT0QxNY=",
+                "https://media.istockphoto.com/id/1317424278/photo/high-voltage-power-transformer.jpg?s=612x612&w=0&k=20&c=xwyiJ4GAfwJRW9ukbBOGHylaReVxtqOsnMFRJwKmHU0=",
+                "https://media.istockphoto.com/id/504696386/photo/high-voltage-post-or-voltage-tower.jpg?s=612x612&w=0&k=20&c=ESuhvELjeU6VpoyrejOD2SEVhoGbPMxBzyi_RPgxXdw="
+            ],
+            "displayImage": "https://media.istockphoto.com/id/1340413200/photo/aerial-view-of-a-high-voltage-substation.jpg?s=612x612&w=0&k=20&c=Nat7fUcivRPMID1-CowPHC7o-D_2R3E-8Tb2K9qf_14=",
+            "caption": "Exploring sustainable energy sources",
+            "description": "This exhibit focuses on showcasing the process of power plants. Visitors can learn about the environmental benefits and technological advancements in the field of clean energy.",
+            "location": {
+                "latitude": 6.7959458,
+                "destination_lat": 79.8985603,
+                "destination_lang": 6.7959458,
+                "floor": 2,
+                "building": "Old Gym",
+                "longitude": 79.8985603
+            },
+            "team": [
+                "Sarah Thompson",
+                "Michael Anderson",
+                "Rachel Lee"
+            ],
+            "type": "contest",
+            "title": "Power Plants",
+            "department": "Electrical Engineering",
+            "status": "Active"
+        },
+        {
+            "images": [
+                "https://media.istockphoto.com/id/609935512/photo/robot-welding.jpg?s=612x612&w=0&k=20&c=Dzu-mFYvuUW5rohYqOiX_S-qEbVSsUW4tZ6uTignrRU=",
+                "https://media.istockphoto.com/id/1333855916/photo/automatic-industrial-robotic-robot-working-industry-4-0-and-technologyconcept.jpg?\t\ts=612x612&w=0&k=20&c=cD5B6_b_byA_vM6ReoUrGfubdmXgR0w-SSUrCgJrw6E=",
+                "https://media.istockphoto.com/id/1403862024/photo/automatic-industrial-robotic-robot-working-industry-4-0-and-technology-concept.jpg?s=612x612&w=0&k=20&c=-\tubtdNFx6_3koQvoudWhQ9rSmxxOZYBdkn6Ihcvlptk=",
+                "https://media.istockphoto.com/id/1159418001/photo/manufacture-robot.jpg?s=612x612&w=0&k=20&c=3TAG2JZ7LncZqw8fObm4w5y0Giyk1-jyT8ClD4zwLcU="
+            ],
+            "displayImage": "https://media.istockphoto.com/id/1022237064/photo/robot-arm.jpg?s=612x612&w=0&k=20&c=q9mWdQQvjs3hQ7mkRJWCnq9bxFgdSA3uP9pucr98DWk=",
+            "caption": "Exploring advanced robotics in manufacturing",
+            "description": "This exhibit showcases a fully automated robotic arm system used in industrial assembly lines. It highlights the integration of artificial intelligence and machine learning \talgorithms to optimize manufacturing processes.",
+            "location": {
+                "latitude": 6.796919561901156,
+                "destination_lat": 79.8985603,
+                "destination_lang": 6.7959458,
+                "floor": 1,
+                "building": "Sumanadasa",
+                "longitude": 79.90054763729846
+            },
+            "team": [
+                "John Smith",
+                "Emily Johnson",
+                "David Chen"
+            ],
+            "type": "exhibit",
+            "title": "Robotic Arm Automation",
+            "department": "Mechanical Engineering",
+            "status": "Active"
+        },
+        {
+            "images": [
+                "https://images.unsplash.com/photo-1620634415912-ec5aa1e89d0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGlvdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                "https://images.unsplash.com/photo-1614846027182-cecfee3a427b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGlvdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            ],
+            "displayImage": "https://plus.unsplash.com/premium_photo-1688678097910-706dbce46fa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW90fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+            "caption": "Revolutionizing technolodgy with IOT",
+            "description": "This exhibit showcases the advancement of techbnolody with IOT. It demonstrates the integration of electronics, computer science for the development of technolodgy",
+            "team": [
+                "Alex Rodriguez",
+                "Olivia Walker",
+                "Daniel Kim"
+            ],
+            "type": "lecture",
+            "title": "Internet Of Things",
+            "department": "Electronic Engineering",
+            "status": "Active",
+            "location": {
+                "latitude": 6.797387743599431,
+                "floor": 1,
+                "building": "Library",
+                "longitude": 79.90048743889201,
+                "destination_lat": 6.7959458,
+                "destination_lang": 79.8985603
+            }
+        },
+        {
+            "images": [
+                "https://img.freepik.com/free-photo/car-parts-repair-garage_1170-1702.jpg?size=626&ext=jpg",
+                "https://dms.uom.lk/apps/files_sharing/publicpreview/CJKstEgYoWYkWyi?x=1853&y=477&a=true&file=marker.jpg&scalingup=0",
+                "https://img.freepik.com/free-photo/female-model-with-tattooed-body-wearing-protective-goggles-car-engine_613910-20311.jpg?size=626&ext=jpg",
+                "https://img.freepik.com/free-photo/close-up-nozzles-diesel-engine-opened-bonnet_651396-1339.jpg?size=626&ext=jpg&ga=GA1.1.1632703087.1690009994&semt=ais"
+            ],
+            "displayImage": "https://thumbs.dreamstime.com/b/car-mechanic-working-auto-repair-service-professional-31414293.jpg?w=1200",
+            "caption": "Exploring advanced engine manufacturing",
+            "description": "This exhibit showcases the modern engine manufacturing. It highlights the integration of artificial intelligence and machine learning algorithms to optimize manufacturing \tprocesses.",
+            "location": {
+                "latitude": 6.796919561901156,
+                "destination_lat": 79.8985603,
+                "destination_lang": 6.7959458,
+                "floor": 1,
+                "building": "Sentra Court",
+                "longitude": 79.90054763729846
+            },
+            "team": [
+                "John Smith",
+                "Emily Johnson",
+                "David Chen"
+            ],
+            "type": "lecture",
+            "title": "Engines",
+            "department": "Mechanical Engineering",
+            "status": "Active"
+        },
+        {
+            "images": [
+                "https://img.freepik.com/free-vector/cloud-services-isometric-composition-with-big-cloud-computing-infrastructure-elements-connected-with-dashed-lines-vector-illustration_1284-\t30495.jpg?size=626&ext=jpg&ga=GA1.1.1632703087.1690009994&semt=ais",
+                "https://img.freepik.com/free-photo/hologram-projector-screen-with-cloud-system-technology_53876-108502.jpg?size=626&ext=jpg&ga=GA1.1.1632703087.1690009994&semt=ais",
+                "https://img.freepik.com/premium-photo/cloud-computing-technology-online-data-storage-business-network-concept_31965-15300.jpg?\tsize=626&ext=jpg&ga=GA1.1.1632703087.1690009994&semt=ais"
+            ],
+            "displayImage": "https://img.freepik.com/premium-photo/technology-blockchain-abstract-background_99433-526.jpg?size=626&ext=jpg&ga=GA1.1.1632703087.1690009994&semt=ais",
+            "caption": "Cloud Computing for modern applications",
+            "description": "This exhibit focuses on how the cloud computing is used in modern days.Cloud computing is a technology that enables users to access and utilize computing resources, such as storage \tand processing power, over the internet, offering flexibility and scalability for various applications.",
+            "location": {
+                "latitude": 6.796506427963083,
+                "destination_lat": 79.8985603,
+                "destination_lang": 6.7959458,
+                "floor": 0,
+                "building": "Tronic Building",
+                "longitude": 79.90115417710636
+            },
+            "team": [
+                "Logan Wilson",
+                "Emma Johnson",
+                "Henry Brown"
+            ],
+            "type": "boot camp",
+            "title": "Cloud Computing",
+            "department": "Computer Engineering",
+            "status": "Active"
+        }
+    ]
+}

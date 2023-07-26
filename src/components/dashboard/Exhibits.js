@@ -29,7 +29,6 @@ const Exhibits = () => {
         )
       );
       setIsLoading(false);
-      console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       setProjects(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
 
@@ -53,6 +52,7 @@ const Exhibits = () => {
     navigate("/create-project", {
       state: {
         project,
+        type:"exhibits"
       },
     });
   };
@@ -105,7 +105,7 @@ const Exhibits = () => {
                         <div style={{ display: "flex" }}>
                           <button
                             className="btn"
-                            onClick={() => onEdit(project.id)}
+                            onClick={() => onEdit(project)}
                           >
                             <i className="fa fa-marker" aria-hidden="true"></i>
                           </button>

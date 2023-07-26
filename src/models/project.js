@@ -26,32 +26,23 @@ export const projectGet = async (id) => {
   return docSnap.data();
 };
 
-export const projectSave = async (form, images, notification) => {
+export const projectSave = async (form, images,thumbnail,type, notification) => {
   try {
-    const docRef = await addDoc(collection(Firestore, "exhibits"), form);
+    // const docRef = await addDoc(collection(Firestore, type), form);
+    const Ref = await Firestore.collection(type).add(form);
 
-    const imageUrls = await Promise.all(
-      images.map(async (image) => {
-        const storageRef = ref(Storage, `images/${docRef.id}/${image.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, image);
-        uploadTask.on("state_changed", (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          notification.loading(`Uploading ${image.name}: ${progress}%`);
-        });
+    images.forEach(image => {
+      const imageLink=uploadFile(image);
+      form.images.push(imageLink);
+    });
 
-        await uploadTask;
-        const url = await getDownloadURL(storageRef);
-        return url;
-      })
-    );
+    form.thumbnail=uploadFile(thumbnail);
 
-    form.imgs.push(...imageUrls);
+    const res=await Ref.set(form)
+    
+    // await setDoc(doc(Firestore, {type}, docRef.id), form);
 
-    await setDoc(doc(Firestore, "exhibits", docRef.id), form);
-
-    return docRef.id;
+    return Ref.id;
   } catch (error) {
     console.error("Error saving project:", error);
     throw error;
@@ -86,34 +77,12 @@ export const updateImages = async (projectId, images, notification) => {
       throw new Error("Project does not exist");
     }
 
-    // Upload new images to Firestore storage
-    const imageUrls = await Promise.all(
-      images.map(async (image) => {
-        const storageRef = ref(Storage, `images/${projectId}/${image.name}`);
-        console.log("hi");
-        const uploadTask = uploadBytesResumable(storageRef, image);
+    images.forEach(image => {
+      const imageLink=uploadFile(image);
+      form.images.push(imageLink);
+    });
 
-        // Log upload progress
-        uploadTask.on("state_changed", (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          notification.loading(`Uploading ${image.name}: ${progress}%`);
-        });
-
-        await uploadTask;
-        const url = await getDownloadURL(storageRef);
-        return url;
-      })
-    );
-
-    const imgs = projectDoc.data().imgs;
-
-    // Add new image URLs to imgs field
-    imgs.push(...imageUrls);
-
-    // Update document with new imgs field value
-    await updateDoc(projectRef, { imgs });
+    await updateDoc(projectRef, { images });
     console.log("Project updated successfully");
   } catch (error) {
     console.error("Error updating project:", error);
@@ -145,4 +114,23 @@ export const deleteProject = async (id) => {
       await deleteObject(fileRef);
     })
   );
+};
+
+export const uploadFile = async (file) => {
+  fetch("https://admin.exmo.uom.lk/fileUpload.php", {
+    method: "POST",
+    headers: {
+      "X-Api-Key": "xMsbQTsBl4PAv4I9r^17^!ghGGioOt1R",
+    },
+    body: file,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return "https://admin.exmo.uom.lk/" + data.path;
+      // Handle the response from the server here
+    })
+    .catch((error) => {
+      console.error("Error uploading file:", error);
+      // Handle errors here
+    });
 };

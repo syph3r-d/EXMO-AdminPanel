@@ -16,11 +16,11 @@ import { set } from "firebase/database";
 
 const CreateProject = () => {
   const { currentUser } = useContext(AuthContext);
+  const [type, setType] = useState("exhibits");
   const [update, setUpdate] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
-    subtitle: "",
-    thumbnail: "",
+    caption: "",
     displayImage: "",
     location: {
       building: "",
@@ -29,18 +29,17 @@ const CreateProject = () => {
       latitude: 0,
       longitude: 0,
     },
-    faculty: "",
     caption: "",
     department: "",
     description: "",
     hours: [{ start: "", end: "" }],
     images: [],
     team: [""],
-    status: "",
+    status: "0",
     userid: currentUser.uid,
   });
   const [deleted, setDeleted] = useState([]);
-  const [images, setImages] = useState([]);
+  const [imgs, setImgs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [thumbnail, setThumbnail] = useState(null);
 
@@ -51,17 +50,17 @@ const CreateProject = () => {
   useEffect(() => {
     if (project !== undefined) {
       setUpdate(true);
+      console.log(project);
       setFormData({
         title: project.title,
-        subtitle: project.subtitle,
-        faculty: project.faculty,
-        hours: project.hours,
+        caption: project.caption,
+        displayImage: project.displayImage,
         team: project.team,
         status: project.status,
         department: project.department,
         location: project.location,
         description: project.description,
-        imgs: project.imgs,
+        images: project.images,
       });
     }
   }, [project]);
@@ -71,39 +70,37 @@ const CreateProject = () => {
 
   const {
     title,
-    subtitle,
-    faculty,
-    hours,
+    caption,
     team,
     status,
-    category,
     department,
     location,
     description,
-    imgs,
+    displayImage,
+    images,
   } = formData;
 
   const handleImageChange = (e) => {
     const fileList = Array.from(e.target.files);
     const newImages = fileList.filter((file) => /image\/*/.test(file.type));
-    if (newImages.length + images.length > 3) {
+    if (newImages.length + imgs.length > 3) {
       alert("You can only upload up to 3 images.");
       return;
     }
-    setImages([...images, ...newImages]);
+    setImgs([...imgs, ...newImages]);
   };
 
   const handleProjectImageDelete = (url, index) => {
-    setDeleted((deleted) => [...deleted, imgs[index]]);
-    const newimgs = [...imgs];
+    setDeleted((deleted) => [...deleted, images[index]]);
+    const newimgs = [...images];
     newimgs.splice(index, 1);
-    setFormData({ ...formData, imgs: newimgs });
+    setFormData({ ...formData, images: newimgs });
   };
 
   const handleImageDelete = (index) => {
     const newImages = [...images];
     newImages.splice(index, 1);
-    setImages(newImages);
+    setImgs(newImages);
   };
 
   const onChange = (e) => {
@@ -112,11 +109,7 @@ const CreateProject = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(formData);
-    return;
     setIsLoading(true);
-
     if (update) {
       try {
         await projectUpdate(formData, project.id);
@@ -135,7 +128,7 @@ const CreateProject = () => {
       }
     } else {
       try {
-        await projectSave(formData, images, notification);
+        await projectSave(formData, imgs, thumbnail, type, notification);
         notification.success("Project Created Successfully");
         setIsLoading(false);
         navigate("/dashboard");
@@ -146,11 +139,11 @@ const CreateProject = () => {
     }
   };
 
-  const onTimeChange = (e, index) => {
-    const newHours = [...hours];
-    newHours[index] = { ...newHours[index], [e.target.name]: e.target.value };
-    setFormData({ ...formData, hours: newHours });
-  };
+  // const onTimeChange = (e, index) => {
+  //   const newHours = [...hours];
+  //   newHours[index] = { ...newHours[index], [e.target.name]: e.target.value };
+  //   setFormData({ ...formData, hours: newHours });
+  // };
 
   const handleThumbChange = (e) => {
     setThumbnail(e.target.files[0]);
@@ -183,20 +176,22 @@ const CreateProject = () => {
     setFormData({ ...formData, team: newTeam });
   };
 
-  const addTime = (e) => {
-    e.preventDefault();
-    const newHours = [...hours];
-    newHours.push({ start: "", end: "" });
-    setFormData({ ...formData, hours: newHours });
-  };
+  // const addTime = (e) => {
+  //   e.preventDefault();
+  //   const newHours = [...hours];
+  //   newHours.push({ start: "", end: "" });
+  //   setFormData({ ...formData, hours: newHours });
+  // };
 
-  const removeTime = (e, index) => {
-    e.preventDefault();
-    const newHours = [...hours];
-    newHours.splice(index, 1);
-    setFormData({ ...formData, hours: newHours });
+  // const removeTime = (e, index) => {
+  //   e.preventDefault();
+  //   const newHours = [...hours];
+  //   newHours.splice(index, 1);
+  //   setFormData({ ...formData, hours: newHours });
+  // };
+  const onChangeType = (e) => {
+    setType(e.target.value);
   };
-
   return (
     <Fragment>
       <div className="card">
@@ -207,6 +202,19 @@ const CreateProject = () => {
         </p>
         <small>* - required field</small>
         <form className="form">
+          <div className="form-group">
+            <select
+              name="type"
+              onChange={(e) => onChangeType(e)}
+              value={type}
+              required
+            >
+              <option value="0">* Select Type</option>
+              <option value="lecture">Lecture</option>
+              <option value="exhibits">Exhibit</option>
+              <option value="event">Event</option>
+            </select>
+          </div>
           <div className="form-group">
             <input
               type="text"
@@ -220,20 +228,10 @@ const CreateProject = () => {
           <div className="form-group">
             <input
               type="text"
-              placeholder="* Exhibit Sub-Title"
-              name="subtitle"
+              placeholder="* Exhibit Caption"
+              name="caption"
               onChange={(e) => onChange(e)}
-              value={subtitle}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="* Faculty"
-              name="faculty"
-              onChange={(e) => onChange(e)}
-              value={faculty}
+              value={caption}
               required
             />
           </div>
@@ -269,14 +267,17 @@ const CreateProject = () => {
             </button>
           </div>
           <div className="form-group">
-            <input
-              type="text"
-              placeholder="Status"
+            <select
               name="status"
               onChange={(e) => onChange(e)}
               value={status}
               required
-            />
+            >
+              <option value="0">* Select Status</option>
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
+              <option value="Paused">Paused</option>
+            </select>
           </div>
           <div className="form-group">
             <label className="upload__btn">
@@ -289,7 +290,7 @@ const CreateProject = () => {
                 onChange={handleThumbChange}
               />
             </label>
-            {/* <div className="upload__img-wrap">
+            <div className="upload__img-wrap">
               {thumbnail === null ? (
                 <Fragment></Fragment>
               ) : (
@@ -304,9 +305,25 @@ const CreateProject = () => {
                   </button>
                 </div>
               )}
-            </div> */}
+              {displayImage !== "" ? (
+                <div className="upload__img-box">
+                  <img src={displayImage} alt="Thumbnail" />
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() =>
+                      setFormData({ ...formData, displayImage: "" })
+                    }
+                  >
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              ) : (
+                <Fragment></Fragment>
+              )}
+            </div>
           </div>
-          {hours.map((hour, index) => (
+          {/* {hours.map((hour, index) => (
             <div key={index} className="twocolumns">
               <div className="form-group">
                 <label htmlFor="start">Start Time</label>
@@ -340,10 +357,10 @@ const CreateProject = () => {
                 </button>
               )}
             </div>
-          ))}
-          <button className="btn btn-primary" onClick={(e) => addTime(e)}>
+          ))} */}
+          {/* <button className="btn btn-primary" onClick={(e) => addTime(e)}>
             Add New Time Slot
-          </button>
+          </button> */}
 
           {/* <div className="form-group">
             <select
@@ -371,13 +388,46 @@ const CreateProject = () => {
               required
             >
               <option value="0">* Select Department</option>
-              <option value="Mechanical">Mechanical</option>
-              <option value="ENTC">ENTC</option>
-              <option value="CSE">CSE</option>
-              <option value="Chemical">Chemical</option>
-              <option value="Material">Material</option>
-              <option value="Electrical">Electrical</option>
-              <option value="Civil">Civil</option>
+              <option value="Faculty of Medicine">Faculty of Medicine</option>
+              <option value="Faculty of Information Technology">
+                Faculty of Information Technology
+              </option>
+              <option value="Faculty of Business">Faculty of Business</option>
+              <option value="UOM Facilities Management">
+                UOM Facilities Management
+              </option>
+              <option value="Town & Country Planning">
+                Town & Country Planning
+              </option>
+              <option value="Fashion and Textile Design">
+                Fashion and Textile Design
+              </option>
+              <option value="Building Economics">Building Economics</option>
+              <option value="Integrated Design">Integrated Design</option>
+              <option value="Architecture">Architecture</option>
+              <option value="Chemical & Process Engineering">
+                Chemical & Process Engineering
+              </option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Earth Resources Engineering">
+                Earth Resources Engineering
+              </option>
+              <option value="Electrical Engineering">
+                Electrical Engineering
+              </option>
+              <option value="Electronic & Telecommunication Engineering">
+                Electronic & Telecommunication Engineering
+              </option>
+              <option value="Material Science & Engineering">
+                Material Science & Engineering
+              </option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Computer Science & Engineering">
+                Computer Science & Engineering
+              </option>
+              <option value="Textile & Apparel Engineering">
+                Textile & Apparel Engineering
+              </option>
             </select>
           </div>
           <div className="location">
@@ -420,8 +470,8 @@ const CreateProject = () => {
                 </label>
               </div>
               <div className="upload__img-wrap">
-                {imgs?.length > 0 ? (
-                  imgs.map((imgUrl, index) => (
+                {images?.length > 0 ? (
+                  images.map((imgUrl, index) => (
                     <Fragment>
                       <div className="upload__img-box" key={index}>
                         <img
@@ -444,7 +494,7 @@ const CreateProject = () => {
                 ) : (
                   <Fragment></Fragment>
                 )}
-                {images.map((image, index) => (
+                {imgs.map((image, index) => (
                   <div className="upload__img-box" key={index}>
                     <img
                       src={URL.createObjectURL(image)}
@@ -475,7 +525,7 @@ const CreateProject = () => {
           </Link>
         </form>
       </div>
-      <FileUpload />
+      {/* <FileUpload /> */}
     </Fragment>
   );
 };

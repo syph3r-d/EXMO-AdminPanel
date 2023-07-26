@@ -28,8 +28,8 @@ export const projectGet = async (id) => {
 
 export const projectSave = async (form, images,thumbnail,type, notification) => {
   try {
-    // const docRef = await addDoc(collection(Firestore, type), form);
-    const Ref = await Firestore.collection(type).add(form);
+    const docRef = await addDoc(collection(Firestore, type), form);
+    // const Ref = await Firestore.collection(type).add(form);
 
     images.forEach(image => {
       const imageLink=uploadFile(image);
@@ -40,9 +40,9 @@ export const projectSave = async (form, images,thumbnail,type, notification) => 
 
     const res=await Ref.set(form)
     
-    // await setDoc(doc(Firestore, {type}, docRef.id), form);
+    await setDoc(doc(Firestore, {type}, docRef.id), form);
 
-    return Ref.id;
+    return docRef.id;
   } catch (error) {
     console.error("Error saving project:", error);
     throw error;

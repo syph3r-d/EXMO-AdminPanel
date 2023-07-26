@@ -38,7 +38,7 @@ export const projectSave = async (form, images,thumbnail,type, notification) => 
 
     form.thumbnail=uploadFile(thumbnail);
 
-    const res=await Ref.set(form)
+    // const res=await Ref.set(form)
     
     await setDoc(doc(Firestore, {type}, docRef.id), form);
 
@@ -79,7 +79,7 @@ export const updateImages = async (projectId, images, notification) => {
 
     images.forEach(image => {
       const imageLink=uploadFile(image);
-      form.images.push(imageLink);
+      images.push(imageLink);
     });
 
     await updateDoc(projectRef, { images });

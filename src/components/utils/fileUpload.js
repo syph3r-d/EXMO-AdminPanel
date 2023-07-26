@@ -47,6 +47,7 @@ const FileUpload = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log("File uploaded:", data.path);
+          return data.path;
           // Handle the response from the server here
         })
         .catch((error) => {

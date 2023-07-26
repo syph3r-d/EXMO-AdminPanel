@@ -1,4 +1,5 @@
 import { Firestore, Storage } from "../config/db";
+import FileUpload from "../components/utils/fileUpload";
 import { getDatabase, push, set, update, remove, get } from "firebase/database";
 import {
   collection,
@@ -35,19 +36,20 @@ export const projectSave = async (
 ) => {
   try {
     const docRef = await addDoc(collection(Firestore, type), form);
-    console.log(form);
     // const Ref = await Firestore.collection(type).add(form);
+    console.log(form);
 
-    images.forEach((image) => {
-      const imageLink = uploadFile(image);
+    images.forEach(async (image) => {
+      const imageLink = await uploadFile(image);
       form.images.push(imageLink);
     });
+    if (thumbnail) {
+      form.displayImage = await uploadFile(thumbnail);
+    }
 
-    form.thumbnail = await uploadFile(thumbnail);
+    // const res = await docRef.set(form);
 
-    const res = await docRef.set(form);
-
-    // await setDoc(doc(Firestore, {type}, docRef.id), form);
+    await setDoc(doc(Firestore, type, docRef.id), form);
 
     return docRef.id;
   } catch (error) {

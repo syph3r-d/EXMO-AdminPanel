@@ -6,7 +6,7 @@ import Spinner from "../layout/Spinner";
 const ExhibitView = () => {
   const [formData, setFormData] = useState({
     title: "",
-    subtitle: "",
+    caption: "",
     faculty: "",
     department: "",
     location: {
@@ -15,38 +15,31 @@ const ExhibitView = () => {
       title: "",
       subtitle: "",
     },
-    hours: {
-      start: "",
-      end: "",
-    },
     team: [],
     status: "",
     description: "",
-    imgs: [],
+    images: [],
     userid: "",
-    thumbnail: "",
+    displayImage: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
+  console.log(formData);
   const {
     title,
-    subtitle,
+    caption,
     faculty,
-    hours,
-    team,
-    status,
-    category,
     department,
-    location,
-    thumbnail,
+    displayImage,
     description,
-    imgs,
+    images,
   } = formData;
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       const data = await projectGet(id);
-      setFormData(data);
+      console.log(data);
+      // setFormData(data);
       setIsLoading(false);
     };
     fetchData();
@@ -59,16 +52,16 @@ const ExhibitView = () => {
         ) : (
           <Fragment>
             <div className="heading">
-              <div className="thumbnail">
-                <img src={thumbnail} alt="" />
+              <div className="displayImage">
+                <img src={displayImage} alt="" />
               </div>
               <div className="details">
                 <div className="large text-primary">{title}</div>
-                <p className="subtitle">{subtitle}</p>
-                <p className="subtitle">
+                <p className="caption">{caption}</p>
+                <p className="caption">
                   {faculty} | {department}
                 </p>
-                <p className="subtitle">Team Member 1 | Team Member 2</p>
+                <p className="caption">Team Member 1 | Team Member 2</p>
                 <button className="btn btn-primary mt-1">
                   <i className="fa fa-marker" aria-hidden="true"></i>
                 </button>

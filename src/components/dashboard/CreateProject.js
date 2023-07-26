@@ -16,7 +16,7 @@ import { set } from "firebase/database";
 
 const CreateProject = () => {
   const { currentUser } = useContext(AuthContext);
-  const [type, setType] = useState("exhibits");
+  const [type, setType] = useState("exhibits_xx");
   const [update, setUpdate] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -120,7 +120,7 @@ const CreateProject = () => {
         }
         notification.success("Project Updated Successfully");
         setIsLoading(false);
-        navigate("/dashboard");
+        // navigate("/dashboard");
       } catch (error) {
         setIsLoading(false);
         console.log(error);
@@ -210,7 +210,7 @@ const CreateProject = () => {
             >
               <option value="0">* Select Type</option>
               <option value="lecture">Lecture</option>
-              <option value="exhibits2">Exhibit</option>
+              <option value="exhibits_xx">Exhibit</option>
               <option value="event">Event</option>
             </select>
           </div>

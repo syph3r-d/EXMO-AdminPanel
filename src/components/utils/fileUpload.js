@@ -37,7 +37,7 @@ const FileUpload = () => {
       //     // Handle errors here
       //   });
 
-      fetch("http://admin.exmo.uom.lk/fileUpload.php", {
+      fetch("https://admin.exmo.uom.lk/fileUpload.php", {
         method: "POST",
         headers: {
           "X-Api-Key": "xMsbQTsBl4PAv4I9r^17^!ghGGioOt1R",

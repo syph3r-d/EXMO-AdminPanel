@@ -35,7 +35,7 @@ export const projectSave = async (
 ) => {
   try {
     const docRef = await addDoc(collection(Firestore, type), form);
-    // firestore.collection(collectionName).doc(docId);
+    console.log(form);
     // const Ref = await Firestore.collection(type).add(form);
 
     images.forEach((image) => {

@@ -88,7 +88,6 @@ const Exhibits = () => {
                 <thead>
                   <tr>
                     <th>Title</th>
-                    <th className="hide-sm">Faculty</th>
                     <th className="hide-sm">Department</th>
                     <th className="hide-sm">Status</th>
                     <th></th>
@@ -97,27 +96,9 @@ const Exhibits = () => {
                 <tbody>
                   {projects.map((project) => (
                     <tr key={project.id}>
-                      <td onClick={() => onView(project.id)}>
-                        {project.title}
-                      </td>
-                      <td
-                        onClick={() => onView(project.id)}
-                        className="hide-sm"
-                      >
-                        {project.faculty}
-                      </td>
-                      <td
-                        onClick={() => onView(project.id)}
-                        className="hide-sm"
-                      >
-                        {project.department}
-                      </td>
-                      <td
-                        onClick={() => onView(project.id)}
-                        className="hide-sm"
-                      >
-                        {project.status}
-                      </td>
+                      <td onClick={() => onView(project.id)}>{project.title}</td>
+                      <td onClick={() => onView(project.id)} className="hide-sm">{project.department}</td>
+                      <td onClick={() => onView(project.id)} className="hide-sm">{project.status}</td>
                       <td>
                         <div style={{ display: "flex" }}>
                           <button

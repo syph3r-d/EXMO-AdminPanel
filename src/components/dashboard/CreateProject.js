@@ -32,7 +32,6 @@ const CreateProject = () => {
     caption: "",
     department: "",
     description: "",
-    hours: [{ start: "", end: "" }],
     images: [],
     team: [""],
     status: "0",

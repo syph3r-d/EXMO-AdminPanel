@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { projectGet } from "../../models/project";
 import Spinner from "../layout/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const ExhibitView = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const ExhibitView = () => {
     userid: "",
     displayImage: "",
   });
+  const navigate=useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   console.log(formData);
@@ -38,12 +40,21 @@ const ExhibitView = () => {
     const fetchData = async () => {
       setIsLoading(true);
       const data = await projectGet(id);
-      console.log(data);
-      // setFormData(data);
+      // console.log(data);
+      setFormData(data);
       setIsLoading(false);
     };
     fetchData();
   }, []);
+
+  const onEdit = () => {
+    navigate("/create-project", {
+      state: {
+        project: formData,
+        type: "exhibits",
+      },
+    });
+  }
   return (
     <div>
       <div className="card larger">
@@ -62,15 +73,15 @@ const ExhibitView = () => {
                   {faculty} | {department}
                 </p>
                 <p className="caption">Team Member 1 | Team Member 2</p>
-                <button className="btn btn-primary mt-1">
+                <button className="btn btn-primary mt-1" onClick={()=>onEdit()}>
                   <i className="fa fa-marker" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
             <p className="description">{description}</p>
-            <div className="location">
+            {/* <div className="location">
               <p>Location</p>
-            </div>
+            </div> */}
             <div className="displayimages">
               <img src="./606224.png" alt="" />
               <img src="./606224.png" alt="" />

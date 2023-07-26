@@ -118,15 +118,11 @@ export const deleteUserProjects = async (id) => {
 };
 
 export const deleteProject = async (id) => {
-  await deleteDoc(doc(Firestore, "exhibits_xx", id));
-  const storageRef = ref(Storage, `images/${id}/`);
-  const fileList = await listAll(storageRef);
-
-  await Promise.all(
-    fileList.items.map(async (fileRef) => {
-      await deleteObject(fileRef);
-    })
-  );
+  try {
+    await deleteDoc(doc(Firestore, "exhibits_xx", id));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const uploadFile = async (file) => {

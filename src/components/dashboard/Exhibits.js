@@ -38,8 +38,8 @@ const Exhibits = () => {
   const onDelete = async (id) => {
     try {
       setIsLoading(true);
-      // await deleteProject(id);
-      // setProjects(projects.filter((project) => project.id !== id));
+      await deleteProject(id);
+      setProjects(projects.filter((project) => project.id !== id));
       setIsLoading(false);
       notification.success("Project Deleted");
     } catch (error) {

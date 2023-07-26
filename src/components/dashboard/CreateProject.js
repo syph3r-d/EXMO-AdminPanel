@@ -120,7 +120,7 @@ const CreateProject = () => {
         }
         notification.success("Project Updated Successfully");
         setIsLoading(false);
-        // navigate("/dashboard");
+        navigate("/exhibits");
       } catch (error) {
         setIsLoading(false);
         console.log(error);
@@ -519,7 +519,7 @@ const CreateProject = () => {
             className="btn btn-primary mt-1"
             onClick={(e) => onSubmit(e)}
           />
-          <Link to="/dashboard" className="btn btn-light">
+          <Link to="/exhibits" className="btn btn-light">
             Go Back
           </Link>
         </form>
